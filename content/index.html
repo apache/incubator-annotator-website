@@ -10,16 +10,52 @@
 </head>
 
 <body>
-  <div class="ui very padded raised container segment" style="margin-top:3em">
+  <div class="ui fixed borderless main menu">
+    <div class="ui container">
+      <h2 class="header item">
+        Apache Annotator <em style="font-size: 14px; margin-left: 1em">(incubating)</em>
+      </h2>
+
+      <div class="ui right simple dropdown item">
+        About <i class="dropdown icon"></i>
+        <div class="menu">
+          <a class="item" target="_blank" href="https://cwiki.apache.org/confluence/display/ANNO/Annotator+Proposal">Apache Annotator Proposal</a>
+          <div class="divider"></div>
+          <div class="header">The <abbr title="Apache Software Foundation">ASF</abbr></div>
+          <a class="item" target="_blank" href="http://incubator.apache.org/">Apache Incubator</a>
+          <a class="item" target="_blank" href="http://www.apache.org/">About the ASF<span></span></a>
+          <a class="item" target="_blank" href="http://www.apache.org/foundation/thanks.html">Thanks<span></span></a>
+          <a class="item" target="_blank" href="http://www.apache.org/foundation/sponsorship.html">Become a Sponsor<span></span></a>
+          <a class="item" target="_blank" href="http://www.apache.org/security/">Security<span></span></a>
+          <a class="item" target="_blank" href="http://www.apache.org/licenses/LICENSE-2.0">License<span></span></a>
+        </div>
+      </div>
+
+      <div class="ui simple dropdown item">
+        Mailing lists <i class="dropdown icon"></i>
+        <div class="menu">
+          <a class="item" target="_blank" href="http://mail-archives.apache.org/mod_mbox/incubator-annotator-commits/"><code>commits@</code> Mailing List</a>
+          <a class="item" target="_blank" href="http://mail-archives.apache.org/mod_mbox/incubator-annotator-dev/"><code>dev@</code> Mailing List</a>
+        </div>
+      </div>
+
+      <div class="ui simple dropdown item">
+        Contribute <i class="dropdown icon"></i>
+        <div class="menu">
+          <a class="item" target="_blank" href="https://cwiki.apache.org/confluence/display/ANNO">Wiki<span></span></a>
+          <a class="item" target="_blank" href="https://issues.apache.org/jira/browse/ANNO">Issue Tracker<span></span></a>
+          <a class="item" target="_blank" href="https://github.com/apache?q=annotator">Git Mirrors<span></span></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="ui very padded container segment"
+       style="margin-top:5em; border: none; box-shadow: none">
     <div class="ui grid">
-      <div class="twelve wide content column">
-        <h1 id="apache-annotator-incubating" class="ui header">
-          Apache Annotator (incubating)
-        </h1>
-        <blockquote class="ui icon message">
-          <p>Apache Annotator provides annotation enabling code for browsers,
-          servers, and humans.</p>
-        </blockquote>
+      <div class="content column">
+        <h4><a href="https://cwiki.apache.org/confluence/display/ANNO/Annotator+Proposal" target="_blank">Apache Annotator</a> provides annotation enabling code for browsers, servers, and humans.</h4>
         <p>We are currently seeking developers and community members interested in participating in the future of annotation.</p>
         <p>Our intended focus areas are:</p>
         <ul>
@@ -33,7 +69,7 @@
         mailing list is where most of our conversations currently happen.
         Subscribe by emailing <a href="mailto:dev-subscribe@annotator.incubator.apache.org?subject=subscribe&body=just click send. srsly. it is that easy. ^_^\n\nLove,\nApache Annotator (incubating)">dev-subscribe@annotator.incubator.apache.org</a>
         and be sure to say "hi" once you're in!</p>
-        <p>View <a href="http://mail-archives.apache.org/mod_mbox/incubator-annotator-dev/"><code>dev@</code>'s Archive</a></p>
+        <a class="ui button" href="http://mail-archives.apache.org/mod_mbox/incubator-annotator-dev/">View <code>dev@</code>'s archive</a>
 
         <h3 class="ui header" id="contributing">Contributing</h3>
         <div class="ui list">
@@ -55,41 +91,6 @@
           </div>
         </div>
         <p>You can view the repo's contents online</a>.</p>
-
-      </div>
-
-
-      <div class="four wide column">
-        <h3 class="ui header">Join us!</h3>
-        <div class="ui vertical menu">
-          <a class="item" target="_blank" href="https://cwiki.apache.org/confluence/display/ANNO/Annotator+Proposal">Apache Annotator Proposal</a>
-          <div class="item">
-            <div class="header">Mailing Lists</div>
-            <div class="menu">
-              <a class="item" target="_blank" href="http://mail-archives.apache.org/mod_mbox/incubator-annotator-commits/"><code>commits@</code> Mailing List</a>
-              <a class="item" target="_blank" href="http://mail-archives.apache.org/mod_mbox/incubator-annotator-dev/"><code>dev@</code> Mailing List</a>
-            </div>
-          </div>
-          <div class="item">
-            <div class="header">Contribute</div>
-            <div class="menu">
-              <a class="item" target="_blank" href="https://cwiki.apache.org/confluence/display/ANNO">Wiki<span></span></a>
-              <a class="item" target="_blank" href="https://issues.apache.org/jira/browse/ANNO">Issue Tracker<span></span></a>
-              <a class="item" target="_blank" href="https://github.com/apache?q=annotator">Git Mirrors<span></span></a>
-            </div>
-          </div>
-          <div class="item">
-            <div class="header">The <abbr title="Apache Software Foundation">ASF</abbr></div>
-            <div class="menu">
-              <a class="item" target="_blank" href="http://incubator.apache.org/">Apache Incubator</a>
-              <a class="item" target="_blank" href="http://www.apache.org/">About the ASF<span></span></a>
-              <a class="item" target="_blank" href="http://www.apache.org/foundation/thanks.html">Thanks<span></span></a>
-              <a class="item" target="_blank" href="http://www.apache.org/foundation/sponsorship.html">Become a Sponsor<span></span></a>
-              <a class="item" target="_blank" href="http://www.apache.org/security/">Security<span></span></a>
-              <a class="item" target="_blank" href="http://www.apache.org/licenses/LICENSE-2.0">License<span></span></a>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
 
@@ -99,7 +100,7 @@
 
   <footer class="ui very padded container basic segment">
     <a href="http://apache.org/" target="_blank">
-      <img class="ui centered medium image" src="http://www.apache.org/img/asf_logo.png" />
+      <img class="ui centered medium image" src="https://incubator.apache.org/images/incubator_feather_egg_logo_sm.png" />
     </a>
   </footer>
 </body>
