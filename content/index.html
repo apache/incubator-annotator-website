@@ -10,7 +10,7 @@
 </head>
 
 <body>
-  <div class="ui fixed borderless main menu">
+  <div class="ui borderless top attached main menu">
     <div class="ui container">
       <h2 class="header item">
         Apache Annotator <em style="font-size: 14px; margin-left: 1em">(incubating)</em>
@@ -51,11 +51,10 @@
     </div>
   </div>
 
-  <div class="ui very padded container segment"
-       style="margin-top:5em; border: none; box-shadow: none">
+  <div class="ui basic segment container">
     <div class="ui grid">
       <div class="content column">
-        <h4><a href="https://cwiki.apache.org/confluence/display/ANNO/Annotator+Proposal" target="_blank">Apache Annotator</a> provides annotation enabling code for browsers, servers, and humans.</h4>
+        <blockquote class="ui message"><a href="https://cwiki.apache.org/confluence/display/ANNO/Annotator+Proposal" target="_blank">Apache Annotator</a> provides annotation enabling code for browsers, servers, and humans.</blockquote>
         <p>We are currently seeking developers and community members interested in participating in the future of annotation.</p>
         <p>Our intended focus areas are:</p>
         <ul>
@@ -64,45 +63,74 @@
           <li>enabling Web Annotation in Web browsers, Web Publication readers, and the servers that serve them</li>
         </ul>
 
-        <h3 class="ui header" id="mailing-lists">Mailing Lists</h3>
-        <div class="ui two column doubling grid">
-          <div class="column">
+        <div class="ui stackable grid">
+          <div class="six wide column">
+            <h3 class="ui header" id="mailing-lists">
+              <i class="mail icon"></i>
+              Conversations
+            </h3>
             <p>Human interactions happen on the
-            <a href="mailto:dev@annotator.incubator.apache.org" title="dev@annotator.incubator.apache.org">dev@</a>
+            <code>dev@annotator.incubator.apache.org</code>
             mailing list. Subscribe by emailing
             <a href="mailto:dev-subscribe@annotator.incubator.apache.org?subject=subscribe&body=just click send. srsly. it is that easy. ^_^\n\nLove,\nApache Annotator (incubating)">dev-subscribe@annotator.incubator.apache.org</a>.
             Be sure to say "hi" once you're in!</p>
-            <a class="ui button" href="http://mail-archives.apache.org/mod_mbox/incubator-annotator-dev/">View <code>dev@</code>'s archive</a>
+            <a class="ui button" href="https://lists.apache.org/list.html?dev@annotator.apache.org">Checkout the <code>dev@</code>'s archive</a>
           </div>
-          <div class="column">
-            <p>Commits are sent to the
-            <a href="mailto:commits@annotator.incubator.apache.org" title="commits@annotator.incubator.apache.org">commits@</a>.
-            You can
-            <a href="mailto:commits-subscribe@annotator.incubator.apache.org?subject=subscribe&body=just click send. srsly. it is that easy. ^_^\n\nLove,\nApache Annotator (incubating)">subscribe</a> there if you need to track code progress.</p>
-            <a class="ui button" href="http://mail-archives.apache.org/mod_mbox/incubator-annotator-dev/">View <code>commits@</code>'s archive</a>
-          </div>
-        </div>
+          <div class="ten wide column">
+            <h3 class="ui header" id="contributing">
+              <i class="code icon"></i>
+              Code
+            </h3>
+            <div class="ui two stackable cards">
+              <div class="card">
+                <div class="content">
+                  <h3 class="header">
+                    <i class="github icon"></i>
+                    <a href="https://github.com/apache/incubator-annotator" target="_blank">incubator-annotator</a>
+                  </h3>
+                  <div class="description">Apache Annotator code &amp; build tools</div>
+                </div>
+                <div class="extra content">
+                  <div class="ui horizontal list">
+                    <a class="item" href="https://github.com/apache/incubator-annotator/stargazers" target="_blank">
+                      <i class="star icon"></i> Star
+                    </a>
+                    <a class="item" href="https://github.com/apache/incubator-annotator/watchers" target="_blank">
+                      <i class="find icon"></i> Watch
+                    </a>
+                  </div>
 
-        <h3 class="ui header" id="contributing">Contributing</h3>
-        <div class="ui list">
-          <div class="item">
-            <div class="header">Website Repo
-              (<a href="https://git-wip-us.apache.org/repos/asf?p=incubator-annotator-website.git;a=summary">view online</a>
-              | <a href="https://github.com/apache/incubator-annotator-website">GitHub Mirror</a>)</div>
-            <div class="content">
-              <pre class="ui basic secondary segment"><code>$ git clone https://git-wip-us.apache.org/repos/asf/incubator-annotator-website.git</code></pre>
-            </div>
-          </div>
-          <div class="item">
-            <div class="header">Code Repo
-              (<a href="https://git-wip-us.apache.org/repos/asf?p=incubator-annotator.git;a=summary">view online</a>
-              | <a href="https://github.com/apache/incubator-annotator">GitHub Mirror</a>)</div>
-            <div class="content">
-              <pre class="ui basic secondary segment"><code>$ git clone https://git-wip-us.apache.org/repos/asf/incubator-annotator.git</code></pre>
+                  <a class="right floated link" href="https://github.com/apache/incubator-annotator/commits" target="_blank" title="start date">
+                    <i class="calendar icon"></i> Commit Log
+                  </a>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="content">
+                  <h3 class="header">
+                    <i class="icon github"></i>
+                    <a href="https://github.com/apache/incubator-annotator-website" target="_blank">incubator-annotator-website</a>
+                  </h3>
+                  <div class="description">This site + demo code (soon!)</div>
+                </div>
+                <div class="extra content">
+                  <div class="ui horizontal list">
+                    <a class="item" href="https://github.com/apache/incubator-annotator-website/stargazers" target="_blank">
+                      <i class="star icon"></i> Star
+                    </a>
+                    <a class="item" href="https://github.com/apache/incubator-annotator-website/watchers" target="_blank">
+                      <i class="find icon"></i> Watch
+                    </a>
+                  </div>
+                  <a class="right floated link" href="https://github.com/apache/incubator-annotator-website/commits" target="_blank" title="start date">
+                    <i class="calendar icon"></i> Commit Log
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <p>You can view the repo's contents online.</p>
       </div>
     </div>
 
