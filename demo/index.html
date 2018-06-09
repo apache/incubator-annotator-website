@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+  <title>Apache Annotator (incubating)</title>
+  <link rel="stylesheet" href="//semantic-ui.com/dist/semantic.min.css" />
+  <style>
+      * {
+        box-sizing: border-box;
+      }
+      .highlighted {
+        background-color: rgba(255, 255, 120, 0.5);
+        outline: 0.1px solid rgba(255, 100, 0, 0.8);
+      }
+      #debug {
+        width: 20rem;
+        color: #666;
+        background: #f8f8f8;
+        padding: 2em;
+        height: 19.3em;
+        overflow-y: scroll;
+        resize: vertical;
+        position: relative;
+        bottom: 1em
+      }
+      #debug.error {
+        color: red;
+      }
+      #selectable, #corpus {
+        display: inline-block;
+        width: 20rem;
+        height: 15em;
+        padding: 1em;
+        line-height: 1.4em;
+        font-size: 18px;
+        font-family: sans-serif;
+        border: 1px solid lightgrey;
+      }
+      a[href^="#selector"]:before {
+        content: '📌';
+        font-size: 75%
+      }
+  </style>
+  <script src="demo.js"></script>
+</head>
+
+<body>
+  <div class="ui borderless top attached main menu">
+    <div class="ui container">
+      <h2 class="header item">
+        Apache Annotator <em style="font-size: 14px; margin-left: 1em">(incubating)</em>
+      </h2>
+
+      <div class="right menu">
+        <a class="item" href="https://github.com/apache?q=annotator#org-repositories">Code<span></span></a>
+        <a class="active item" href="demo">Demo<span></span></a>
+        <a class="item" href="https://github.com/apache/incubator-annotator/issues">Issues<span></span></a>
+        <a class="item" href="https://github.com/apache/incubator-annotator/wiki">Wiki<span></span></a>
+        <a class="item" href="https://mail-archives.apache.org/mod_mbox/incubator-annotator-dev/">Mailing List</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="ui basic segment container">
+    <p>
+      Hi! Let's play with some annotator tools! This page demonstrates
+      <a href="https://www.w3.org/TR/2017/REC-annotation-model-20170223/#selectors"
+         target="_blank">Selectors</a>.
+      Try selecting some text in the first paragraph below! In the second paragraph, the selector is 'anchored',
+      i.e. text it refers to is found and highlighted, and on the right the selector is displayed in JSON format.
+    </p>
+  </div>
+
+  <div class="ui four column doubling stackable grid container">
+    <div class="four wide column">
+    <p id="selectable">
+      Hello, annotated world! To annotate, or not to annotate, that is the question.
+    </p>
+    </div>
+
+    <div class="four wide column">
+    <p id="corpus">
+      Hello, annotated world! To annotate, or not to annotate, that is the question.
+    </p>
+    </div>
+
+    <div class="four wide column">
+      <pre id="debug"></pre>
+    </div>
+  </div>
+
+  <div class="ui basic segment container">
+    <p>
+      Upon a change of selection, a
+      <a
+        href="https://www.w3.org/TR/2017/REC-annotation-model-20170223/#text-quote-selector"
+        target="_blank">TextQuoteSelector</a>
+      will be created, that describes what was selected.
+      The selector is serialised and shown the window location,
+      <a href="https://www.w3.org/TR/2017/NOTE-selectors-states-20170223/#frags"
+        target="_blank">as the fragment identifier</a>.
+    </p>
+    <p>
+      Other selectors you can try:
+      <ul>
+        <li>
+          <a href="#selector(type=RangeSelector,startSelector=selector(type=TextQuoteSelector,exact=ann),endSelector=selector(type=TextQuoteSelector,exact=!))">RangeSelector</a>
+          (<a href="https://www.w3.org/TR/2017/REC-annotation-model-20170223/#range-selector" target="_blank">spec</a>)
+        </li>
+        <li>
+          <a href="#selector(type=TextQuoteSelector,exact=annotated%20world,refinedBy=selector(type=TextQuoteSelector,exact=tat))">Refining
+            a selector using another selector</a>
+            (<a href="https://www.w3.org/TR/2017/REC-annotation-model-20170223/#refinement-of-selection" target="blank">spec</a>)
+        </li>
+        <li><a href="#selector(type=TextQuoteSelector,exact=not)">Multiple matches</a> (but overlapping matches currently mess up the highlighter)</li>
+        <li><a href="#selector(type=TextQuoteSelector,exact=To%20annotate%2C%20or%20not%20to%20annotate%2C,refinedBy=selector(type=RangeSelector,startSelector=selector(type=TextQuoteSelector,exact=To%20annotate,refinedBy=selector(type=TextQuoteSelector,exact=annotate)),endSelector=selector(type=TextQuoteSelector,exact=not%20to%20annotate,refinedBy=selector(type=TextQuoteSelector,exact=%20to)),refinedBy=selector(type=TextQuoteSelector,exact=o)))">Any deeper nesting of the above</a></li>
+      </ul>
+    </p>
+      </div>
+    </div>
+</body>
+</html>
