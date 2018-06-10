@@ -21,7 +21,7 @@ const path = require('path');
 module.exports = {
   context: path.resolve(__dirname),
   entry: {
-    demo: './demo/index.js'
+    demo: './content/demo/index.js'
   },
   mode: 'production',
   module: {
@@ -42,7 +42,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname),
-    filename: './demo/demo.js'
+    filename: './content/demo/demo.js'
   },
   target: 'web'
 };
