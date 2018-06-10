@@ -22,8 +22,6 @@
         height: 19.3em;
         overflow-y: scroll;
         resize: vertical;
-        position: relative;
-        bottom: 1em
       }
       #debug.error {
         color: red;
@@ -74,19 +72,22 @@
   </div>
 
   <div class="ui four column doubling stackable grid container">
-    <div class="four wide column">
+    <div class="column">
+    <h4>Select text here</h4>
     <p id="selectable">
       Hello, annotated world! To annotate, or not to annotate, that is the question.
     </p>
     </div>
 
-    <div class="four wide column">
+    <div class="column">
+    <h4>Text is found here</h4>
     <p id="corpus">
       Hello, annotated world! To annotate, or not to annotate, that is the question.
     </p>
     </div>
 
-    <div class="four wide column">
+    <div class="column">
+      <h4>JSON output</h4>
       <pre id="debug"></pre>
     </div>
   </div>

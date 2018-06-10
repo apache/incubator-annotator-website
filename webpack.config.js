@@ -21,7 +21,7 @@ const path = require('path');
 module.exports = {
   context: path.resolve(__dirname),
   entry: {
-    demo: './content/demo/index.js'
+    demo: './src/index.js'
   },
   mode: 'production',
   module: {

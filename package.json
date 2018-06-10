@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A website for the Apache Annotator incubator project.",
   "main": "demo.js",
+  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode=production"
@@ -11,8 +12,7 @@
     "type": "git",
     "url": "git+https://github.com/apache/incubator-annotator-website.git"
   },
-  "author": "",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/apache/incubator-annotator-website/issues"
   },
