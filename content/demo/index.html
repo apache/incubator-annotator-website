@@ -15,7 +15,6 @@
         outline: 0.1px solid rgba(255, 100, 0, 0.8);
       }
       #debug {
-        width: 20rem;
         color: #666;
         background: #f8f8f8;
         padding: 2em;
@@ -28,8 +27,6 @@
       }
       #selectable, #corpus {
         display: inline-block;
-        width: 20rem;
-        height: 15em;
         padding: 1em;
         line-height: 1.4em;
         font-size: 18px;
@@ -45,17 +42,17 @@
 </head>
 
 <body>
-  <div class="ui borderless top attached main menu">
+  <div class="ui borderless stackable top attached main menu">
     <div class="ui container">
       <h2 class="header item">
         Apache Annotator <em style="font-size: 14px; margin-left: 1em">(incubating)</em>
       </h2>
 
       <div class="right menu">
-        <a class="item" href="https://github.com/apache?q=annotator#org-repositories">Code<span></span></a>
-        <a class="active item" href="demo">Demo<span></span></a>
-        <a class="item" href="https://github.com/apache/incubator-annotator/issues">Issues<span></span></a>
-        <a class="item" href="https://github.com/apache/incubator-annotator/wiki">Wiki<span></span></a>
+        <a class="active item" href="demo"><span class="ui positive button">Demo!</span></a>
+        <a class="item" href="https://github.com/apache?q=annotator#org-repositories">Code</a>
+        <a class="item" href="https://github.com/apache/incubator-annotator/issues">Issues</a>
+        <a class="item" href="https://github.com/apache/incubator-annotator/wiki">Wiki</a>
         <a class="item" href="https://mail-archives.apache.org/mod_mbox/incubator-annotator-dev/">Mailing List</a>
       </div>
     </div>
@@ -63,7 +60,7 @@
 
   <div class="ui basic segment container">
     <p>
-      Hi! Let's play with some annotator tools! This page demonstrates
+      This page demonstrates
       <a href="https://www.w3.org/TR/2017/REC-annotation-model-20170223/#selectors"
          target="_blank">Selectors</a>.
       Try selecting some text in the first paragraph below! In the second paragraph, the selector is 'anchored',
@@ -71,22 +68,18 @@
     </p>
   </div>
 
-  <div class="ui four column doubling stackable grid container">
-    <div class="column">
+  <div class="ui doubling stackable grid container">
+    <div class="four wide column">
     <h4>Select text here</h4>
-    <p id="selectable">
-      Hello, annotated world! To annotate, or not to annotate, that is the question.
-    </p>
+    <p id="selectable">Hello, annotated world! To annotate, or not to annotate, that is the question.</p>
     </div>
 
-    <div class="column">
+    <div class="four wide column">
     <h4>Text is found here</h4>
-    <p id="corpus">
-      Hello, annotated world! To annotate, or not to annotate, that is the question.
-    </p>
+    <p id="corpus">Hello, annotated world! To annotate, or not to annotate, that is the question.</p>
     </div>
 
-    <div class="column">
+    <div class="eight wide column">
       <h4>JSON output</h4>
       <pre id="debug"></pre>
     </div>
