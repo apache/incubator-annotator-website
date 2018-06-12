@@ -96,23 +96,20 @@
       <a href="https://www.w3.org/TR/2017/NOTE-selectors-states-20170223/#frags"
         target="_blank">as the fragment identifier</a>.
     </p>
-    <p>
-      Other selectors you can try:
-      <ul>
-        <li>
-          <a href="#selector(type=RangeSelector,startSelector=selector(type=TextQuoteSelector,exact=ann),endSelector=selector(type=TextQuoteSelector,exact=!))">RangeSelector</a>
-          (<a href="https://www.w3.org/TR/2017/REC-annotation-model-20170223/#range-selector" target="_blank">spec</a>)
-        </li>
-        <li>
-          <a href="#selector(type=TextQuoteSelector,exact=annotated%20world,refinedBy=selector(type=TextQuoteSelector,exact=tat))">Refining
-            a selector using another selector</a>
-            (<a href="https://www.w3.org/TR/2017/REC-annotation-model-20170223/#refinement-of-selection" target="blank">spec</a>)
-        </li>
-        <li><a href="#selector(type=TextQuoteSelector,exact=not)">Multiple matches</a> (but overlapping matches currently mess up the highlighter)</li>
-        <li><a href="#selector(type=TextQuoteSelector,exact=To%20annotate%2C%20or%20not%20to%20annotate%2C,refinedBy=selector(type=RangeSelector,startSelector=selector(type=TextQuoteSelector,exact=To%20annotate,refinedBy=selector(type=TextQuoteSelector,exact=annotate)),endSelector=selector(type=TextQuoteSelector,exact=not%20to%20annotate,refinedBy=selector(type=TextQuoteSelector,exact=%20to)),refinedBy=selector(type=TextQuoteSelector,exact=o)))">Any deeper nesting of the above</a></li>
-      </ul>
-    </p>
-      </div>
-    </div>
+    <p>Other selectors you can try:</p>
+    <ul>
+      <li>
+        <a href="#selector(type=RangeSelector,startSelector=selector(type=TextQuoteSelector,exact=ann),endSelector=selector(type=TextQuoteSelector,exact=!))">RangeSelector</a>
+        (<a href="https://www.w3.org/TR/2017/REC-annotation-model-20170223/#range-selector" target="_blank">spec</a>)
+      </li>
+      <li>
+        <a href="#selector(type=TextQuoteSelector,exact=annotated%20world,refinedBy=selector(type=TextQuoteSelector,exact=tat))">Refining
+          a selector using another selector</a>
+          (<a href="https://www.w3.org/TR/2017/REC-annotation-model-20170223/#refinement-of-selection" target="blank">spec</a>)
+      </li>
+      <li><a href="#selector(type=TextQuoteSelector,exact=not)">Multiple matches</a> (but overlapping matches currently mess up the highlighter)</li>
+      <li><a href="#selector(type=TextQuoteSelector,exact=To%20annotate%2C%20or%20not%20to%20annotate%2C,refinedBy=selector(type=RangeSelector,startSelector=selector(type=TextQuoteSelector,exact=To%20annotate,refinedBy=selector(type=TextQuoteSelector,exact=annotate)),endSelector=selector(type=TextQuoteSelector,exact=not%20to%20annotate,refinedBy=selector(type=TextQuoteSelector,exact=%20to)),refinedBy=selector(type=TextQuoteSelector,exact=o)))">Any deeper nesting of the above</a></li>
+    </ul>
+  </div>
 </body>
 </html>
