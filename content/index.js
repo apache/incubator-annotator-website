@@ -11,6 +11,7 @@ fetch(recent_messages_url)
   .then(r => r.json())
   .then((msgs) => {
     if ('emails' in msgs && msgs.emails.length > 0) {
+      msgs.emails.reverse();
       for (let i = 0; i < 5; i++) {
         let _a = a.cloneNode(a);
         _a.href = 'https://lists.apache.org/thread.html/' + msgs.emails[i].id;
