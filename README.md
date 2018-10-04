@@ -19,6 +19,12 @@ Compile the ES6 code with `npm run build`.
 
 Code for the demo lives inside of the `src/` directory.
 
+## Organizing
+
+We also use the [Milestones](https://github.com/apache/incubator-annotator-website/milestones?direction=asc&sort=due_date&state=open) for [this repo on GitHub](https://github.com/apache/incubator-annotator-website/) to track our quarterly board reports.
+
+Web site [issues](https://github.com/apache/incubator-annotator-website/issues/) and [PRs](https://github.com/apache/incubator-annotator-website/pulls) are still more than welcome, though!
+
 # License
 
 Apache License 2.0 (obviously...:wink:)
