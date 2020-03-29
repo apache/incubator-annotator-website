@@ -1,0 +1,3 @@
+[submodule "annotator"]
+	path = annotator
+	url = https://gitbox.apache.org/repos/asf/incubator-annotator.git

@@ -13,11 +13,18 @@ the Apache infrastructure team.
 
 ## Developing
 
-Install dev dependencies with `npm install`.
+##### Requirements
 
-Compile the ES6 code with `npm run build`.
+- [node](https://nodejs.org) >= 10.x
+- [yarn](https://www.yarnpkg.com/) >= 1.5.1
 
-Code for the demo lives inside of the `src/` directory.
+This website repository contains the main project repository as a git submodule, in order to build its demo without duplicating the code.
+
+Run `git submodule init && git submodule update` to pull in the submodule.
+
+Run `yarn install` to install development dependencies.
+
+Run `yarn build` to build the demo code (it will overwrite `content/demo`).
 
 ## Organizing
 
