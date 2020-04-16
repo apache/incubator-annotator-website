@@ -11,6 +11,8 @@ Currently, `master` and `asf-site` should be kept in sync. The `asf-site`
 branch gets published to an Apache HTTPD static hosting environment run by
 the Apache infrastructure team.
 
+To update the demo, update the submodule (`git submodule update --remote`), rebuild (`yarn build`; in this repo, not inside the submodule), and commit the changes it made in `content/`.
+
 ## Developing
 
 ##### Requirements
@@ -20,7 +22,7 @@ the Apache infrastructure team.
 
 This website repository contains the main project repository as a git submodule, in order to build its demo without duplicating the code.
 
-Run `git submodule init && git submodule update` to pull in the submodule.
+Run `git submodule init && git submodule update --remote` to pull in the submodule.
 
 Run `yarn install` to install development dependencies.
 
