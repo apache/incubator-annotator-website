@@ -1,5 +1,6 @@
 ---
-title: Board Report
+name: Board Report
+about: Questions to answer for our Incubator Board Reports.
 ---
 
 ## Annotator
