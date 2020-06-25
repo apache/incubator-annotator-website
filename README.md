@@ -7,9 +7,8 @@ folders in the root of this repo.
 
 ## Publishing
 
-Currently, `master` and `asf-site` should be kept in sync. The `asf-site`
-branch gets published to an Apache HTTPD static hosting environment run by
-the Apache infrastructure team.
+The `asf-site` branch gets published to an Apache HTTPD static hosting environment
+run by the Apache infrastructure team.
 
 To update the demo, update the submodule (`git submodule update --remote`), rebuild (`yarn build`; in this repo, not inside the submodule), and commit the changes it made in `content/`.
 
