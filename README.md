@@ -12,6 +12,10 @@ run by the Apache infrastructure team.
 
 To update the demo, update the submodule (`git submodule update --remote`), rebuild (`yarn build`; in this repo, not inside the submodule), and commit the changes it made in `content/`.
 
+To add documentation add Markdown to the `docs/` folder. Further templating
+and build configuration of the `docs/` content can be done in the `.eleventy.js`
+file (since it's built with [11ty.dev](https://11ty.dev/)).
+
 ## Developing
 
 ##### Requirements
@@ -25,7 +29,11 @@ Run `git submodule init && git submodule update --remote` to pull in the submodu
 
 Run `yarn install` to install development dependencies.
 
-Run `yarn build` to build the demo code (it will overwrite `content/demo`).
+Run `yarn build` to build the demo code and docs content (it will overwrite
+`content/demo` and `content/docs`).
+
+Run `yarn serve` to build the demo and docs as well as serve and watch (with
+live reload on changes to the `src/` directory *only*).
 
 ## Organizing
 

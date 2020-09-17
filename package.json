@@ -5,7 +5,9 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "(cd annotator && yarn run web:build) && rm -rf content/demo content/style.css && cp -r annotator/web/dist/demo content/demo && cp annotator/web/dist/style.css content/",
+    "build": "yarn run build:demo && eleventy",
+    "build:demo": "(cd annotator && yarn run web:build && cd ..) && rm -rf content/demo content/style.css && cp -r annotator/web/dist/demo content/demo && cp annotator/web/dist/style.css content/",
+    "serve": "yarn run build:demo && eleventy --serve",
     "postinstall": "cd annotator && yarn install"
   },
   "repository": {
@@ -16,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/apache/incubator-annotator-website/issues"
   },
-  "homepage": "https://github.com/apache/incubator-annotator-website#readme"
+  "homepage": "https://github.com/apache/incubator-annotator-website#readme",
+  "devDependencies": {
+    "@11ty/eleventy": "^0.11.0"
+  }
 }
