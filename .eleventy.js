@@ -6,8 +6,17 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addPassthroughCopy({
     // '...relative to this file': '...relative to `dir.output` below'
+    // demo content gets copyied in verbatim
     'annotator/web/dist/demo/': 'demo/',
-    'annotator/web/dist/style.css': 'style.css'
+    'annotator/web/dist/style.css': 'style.css',
+    // also the images, css, and non-11ty js files
+    'src/.htaccess': '.htaccess',
+    'src/annotator-icon.svg': 'annotator-icon.svg',
+    'src/doap.rdf': 'doap.rdf',
+    'src/favicon.ico': 'favicon.ico',
+    'src/index.js': 'index.js',
+    'src/images/': 'images/',
+    'src/site.webmanifest': 'site.webmanifest'
   });
 
   return {
