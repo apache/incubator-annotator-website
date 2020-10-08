@@ -4,6 +4,12 @@ module.exports = function(eleventyConfig) {
     return JSON.stringify(input, null, '  ');
   });
 
+  eleventyConfig.addPassthroughCopy({
+    // '...relative to this file': '...relative to `dir.output` below'
+    'annotator/web/dist/demo/': 'demo/',
+    'annotator/web/dist/style.css': 'style.css'
+  });
+
   return {
     dir: {
       input: 'src',
