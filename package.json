@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "yarn run build:demo && eleventy",
-    "build:demo": "(cd annotator && yarn run web:build && cd ..) && rm -rf content/demo content/style.css && cp -r annotator/web/dist/demo content/demo && cp annotator/web/dist/style.css content/",
+    "build:demo": "cd annotator && yarn run web:build",
     "serve": "yarn run build:demo && eleventy --serve",
     "postinstall": "cd annotator && yarn install"
   },
