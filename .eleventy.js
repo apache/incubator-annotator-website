@@ -6,9 +6,8 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addPassthroughCopy({
     // '...relative to this file': '...relative to `dir.output` below'
-    // demo content gets copyied in verbatim
-    'annotator/web/dist/demo/': 'demo/',
-    'annotator/web/dist/style.css': 'style.css',
+    // Built demo content gets copied in verbatim
+    'annotator/web/dist/': 'demo/',
     // also the images, css, and non-11ty js files
     'src/.htaccess': '.htaccess',
     'src/annotator-icon.svg': 'annotator-icon.svg',
