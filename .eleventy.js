@@ -20,6 +20,9 @@ module.exports = function(eleventyConfig) {
     'src/site.webmanifest': 'site.webmanifest'
   });
 
+  eleventyConfig.addShortcode('eq', function(a, b) { return a === b });
+  eleventyConfig.addShortcode('not-eq', function(a, b) { return a !== b });
+
   return {
     dir: {
       input: 'src',
