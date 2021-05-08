@@ -1,0 +1,38 @@
+{{#> website_default isDocs=true}}
+  <link rel="stylesheet" href="{{relativeURL "assets/css/main.css"}}">
+  <script async src="{{relativeURL "assets/js/search.js"}}" id="search-script"></script>
+
+  <aside>
+    <style>
+      #tsd-search {
+        position: relative;
+      }
+      #tsd-search input {
+        border: 1px solid grey;
+        border-radius: 2px;
+        padding: 0.2em;
+      }
+      #tsd-search .results {
+        z-index: 1;
+        position: absolute;
+      }
+    </style>
+    {{> typedoc_search_widget}}
+  </aside>
+
+  <header style="margin: 2em 0;" id="typedoc-title">
+    <style>
+      #typedoc-title h1 {
+        margin-top: 0;
+      }
+    </style>
+    {{> typedoc_breadcrumbs}}
+    {{> typedoc_h1_title}}
+  </header>
+
+  <main>
+    {{> typedoc_main_content }}
+  </main>
+
+  <script src="{{relativeURL "assets/js/main.js"}}"></script>
+{{/website_default}}

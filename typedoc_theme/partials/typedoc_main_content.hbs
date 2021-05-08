@@ -1,0 +1,28 @@
+{{!--
+Copyright (c) 2015 Sebastian Lenz.
+Copyright (c) 2016-2020 TypeDoc Contributors.
+Licensed under the Apache License 2.0.
+From: https://github.com/TypeStrong/typedoc-default-themes
+--}}
+<div class="row">
+    <div class="col-8 col-content">
+        {{{contents}}}
+    </div>
+    <div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+        <nav class="tsd-navigation primary">
+            <ul>
+                {{#each navigation.children}}
+                    {{> navigation}}
+                {{/each}}
+            </ul>
+        </nav>
+
+        <nav class="tsd-navigation secondary menu-sticky">
+            <ul class="before-current">
+                {{#each toc.children}}
+                    {{> toc.root}}
+                {{/each}}
+            </ul>
+        </nav>
+    </div>
+</div>

@@ -28,7 +28,12 @@
   <body>
     {{> page_header}}
     <div class="ui basic segment container">
-      {{{content}}}
+      {{!-- This template is used both in our TypeDoc theme, and in 11ty --}}
+      {{!-- For TypeDoc, we get the content as a handlebars partial block --}}
+      {{#> @partial-block}}
+        {{!-- For 11ty, we get the content as a variable --}}
+        {{{content}}}
+      {{/@partial-block}}
     </div>
     {{> page_footer}}
   </body>
