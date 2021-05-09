@@ -1,5 +1,6 @@
 ---
-title: Documentation
+title: Overview
+isDocsIndex: true
 layout: docs
 ---
 

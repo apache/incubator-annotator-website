@@ -1,0 +1,11 @@
+{{!--
+  This template is used both in our TypeDoc theme (for API reference) and in 11ty (for the rest of the site).
+  Therefore: only use plain Handlebars code, no custom helpers etc.
+--}}
+<nav class="ui secondary stackable pointing menu" style="justify-content: center;">
+  <a href="/docs/" class="{{#if isDocsIndex}}active {{/if}}item">Overview</a>
+  <a href="/docs/getting-started" class="{{#if isGettingStarted}}active {{/if}}item">Getting Started</a>
+  <div class="ui secondary menu">
+    <a href="/docs/api/" class="{{#if isApiReference}}active {{/if}}item">API reference</a>
+  </div>
+</nav>

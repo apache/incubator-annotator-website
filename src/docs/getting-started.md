@@ -1,5 +1,6 @@
 ---
 title: Getting Started
+isGettingStarted: true
 layout: docs
 ---
 

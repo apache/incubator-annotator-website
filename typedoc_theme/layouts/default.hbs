@@ -1,38 +1,63 @@
 {{#> website_default isDocs=true}}
-  <link rel="stylesheet" href="{{relativeURL "assets/css/main.css"}}">
-  <script async src="{{relativeURL "assets/js/search.js"}}" id="search-script"></script>
-
-  <aside>
+  {{#*inline "extra_head_stuff"}}
+    <link rel="stylesheet" href="{{relativeURL "assets/css/main.css"}}">
     <style>
-      #tsd-search {
-        position: relative;
-      }
-      #tsd-search input {
-        border: 1px solid grey;
-        border-radius: 2px;
-        padding: 0.2em;
-      }
-      #tsd-search .results {
-        z-index: 1;
-        position: absolute;
+      /* Avoid TypeDoc style messing up the page around it. Why oh why did scoped CSS die? */
+      .ui.container {
+        padding: unset;
       }
     </style>
-    {{> typedoc_search_widget}}
-  </aside>
+    <script async src="{{relativeURL "assets/js/search.js"}}" id="search-script"></script>
+    <script defer src="{{relativeURL "assets/js/main.js"}}"></script>
+  {{/inline}}
 
-  <header style="margin: 2em 0;" id="typedoc-title">
-    <style>
-      #typedoc-title h1 {
-        margin-top: 0;
-      }
-    </style>
-    {{> typedoc_breadcrumbs}}
-    {{> typedoc_h1_title}}
-  </header>
+  {{> docs_nav isApiReference=true}}
 
-  <main>
+  <div class="ui basic segment container">
+    <div class="ui stackable grid">
+      <div class="eight wide column">
+        <h1>
+          API reference
+        </h1>
+      </div>
+      <div class="eight wide column">
+        <aside>
+          <style>
+            #tsd-search {
+              position: relative;
+              text-align: right;
+            }
+            #tsd-search input {
+              border: 1px solid grey;
+              border-radius: 4px;
+              padding: 0.4em;
+            }
+            #tsd-search label,
+            #tsd-search label::before,
+            #tsd-search input {
+              vertical-align: middle;
+            }
+            #tsd-search .results {
+              z-index: 1;
+              position: absolute;
+              box-shadow: 0px 20px 20px #00000066;
+            }
+          </style>
+          {{> typedoc_search_widget}}
+        </aside>
+      </div>
+    </div>
+
+    <header style="margin: 2em 0;" id="typedoc-title">
+      <style>
+        #typedoc-title h1 {
+          margin-top: 0;
+        }
+      </style>
+      {{> typedoc_breadcrumbs}}
+      {{> typedoc_h1_title}}
+    </header>
+
     {{> typedoc_main_content }}
-  </main>
-
-  <script src="{{relativeURL "assets/js/main.js"}}"></script>
+  </div>
 {{/website_default}}

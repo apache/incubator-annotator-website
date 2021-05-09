@@ -1,5 +1,9 @@
+{{!--
+  This template is used both in our TypeDoc theme (for API reference) and in 11ty (for the rest of the site).
+  Therefore: only use plain Handlebars code, no custom helpers etc.
+--}}
 <!DOCTYPE html>
-<html prefix="og: http://ogp.me/ns#">
+<html prefix="og: http://ogp.me/ns#" class="default">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -22,16 +26,22 @@
 
     <link rel="alternate" title="DOAP" href="doap.rdf" type="application/rdf+xml" />
 
+    {{#> extra_head_stuff }}
+      {{!--
+        Our TypeDoc theme puts its stylesheets and scripts here.
+        Note Semantic-UI must be after this to override font size etc.
+      --}}
+    {{/extra_head_stuff}}
+
     <link rel="stylesheet" href="//semantic-ui.com/dist/semantic.min.css" />
   </head>
 
   <body>
     {{> page_header}}
     <div class="ui basic segment container">
-      {{!-- This template is used both in our TypeDoc theme, and in 11ty --}}
-      {{!-- For TypeDoc, we get the content as a handlebars partial block --}}
+      {{!-- For TypeDoc, we get the content as a Handlebars partial block --}}
       {{#> @partial-block}}
-        {{!-- For 11ty, we get the content as a variable --}}
+        {{!-- For 11ty, we get the content as a variable, so that’s our ‘fallback’ code for the partial block --}}
         {{{content}}}
       {{/@partial-block}}
     </div>

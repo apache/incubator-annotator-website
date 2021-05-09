@@ -1,16 +1,19 @@
+{{!--
+  This template is used both in our TypeDoc theme (for API reference) and in 11ty (for the rest of the site).
+  Therefore: only use plain Handlebars code, no custom helpers etc.
+--}}
     <div class="ui borderless stackable top attached main menu">
       <div class="ui container">
         <a class="item" href="/" style="color: rgba(0,0,0,.87);">
           <img class="ui small image" src="/images/annotator-logo.svg" alt="Apache Annotator (incubating)" />
         </a>
 
-        <div class="right menu">
+        <nav class="right menu">
+          <a class="{{#if isHome}}active {{/if}}item" href="/">Home</a>
           <a class="item" href="/demo/"><span class="ui positive button">Demo!</span></a>
-          <a class="item" rel="external" href="https://www.npmjs.com/package/apache-annotator">NPM</a>
-          <a class="item" rel="external" href="https://github.com/apache?q=annotator#org-repositories">Code</a>
-          <a class="item" rel="external" href="https://github.com/apache/incubator-annotator/issues">Issues</a>
-          <a class="{{#if isDocs}}active {{/if}}item" href="/docs/">Docs</a>
-          <a class="item" rel="external" href="https://mail-archives.apache.org/mod_mbox/incubator-annotator-dev/">Mailing List</a>
-        </div>
+          <a class="{{#if isDocs}}active {{/if}}item" href="/docs/">Documentation</a>
+          <a class="item" rel="external" href="https://github.com/apache/incubator-annotator">Code&nbsp;<i class="small external icon"></i></a>
+          <a class="item" rel="external" href="https://github.com/apache/incubator-annotator/issues">Issue tracker&nbsp;<i class="small external icon"></i></a>
+        </nav>
       </div>
     </div>
