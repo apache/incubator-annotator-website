@@ -1,0 +1,12 @@
+{{!--
+Copyright (c) 2015 Sebastian Lenz.
+Copyright (c) 2016-2020 TypeDoc Contributors.
+Licensed under the Apache License 2.0.
+From: https://github.com/TypeStrong/typedoc-default-themes
+--}}
+
+{{#if model.parent}} {{! Don't show breadcrumbs on main project page, it is the root page. !}}
+    <ul class="tsd-breadcrumb">
+        {{#with model}}{{> breadcrumb}}{{/with}}
+    </ul>
+{{/if}}

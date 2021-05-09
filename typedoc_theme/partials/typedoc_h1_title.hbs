@@ -1,0 +1,21 @@
+{{!--
+Copyright (c) 2015 Sebastian Lenz.
+Copyright (c) 2016-2020 TypeDoc Contributors.
+Licensed under the Apache License 2.0.
+From: https://github.com/TypeStrong/typedoc-default-themes
+--}}
+
+<h1>{{#compact}}
+    {{#ifCond model.kindString "!==" "Project" }}
+        {{model.kindString}}&nbsp;
+    {{/ifCond}}
+    {{model.name}}
+    {{#if model.typeParameters}}
+        &lt;
+        {{#each model.typeParameters}}
+            {{#if @index}},&nbsp;{{/if}}
+            {{name}}
+        {{/each}}
+        &gt;
+    {{/if}}
+{{/compact}}</h1>

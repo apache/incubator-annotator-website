@@ -1,0 +1,18 @@
+---
+layout: default
+isDocs: true
+---
+      <div class="ui grid">
+        <div class="three wide column">
+          <div class="ui vertical secondary menu">
+            {{#each collections.all}}
+            {{#if (not-eq this.url '/')}}
+            <div class="{{#if (eq ../page.url this.url)}}active {{/if}}item"><a href="{{this.url}}">{{this.data.title}}</a></div>
+            {{/if}}
+            {{/each}}
+          </div>
+        </div>
+        <div class="nine wide column">
+          {{{content}}}
+        </div>
+      </div>

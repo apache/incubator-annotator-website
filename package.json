@@ -5,9 +5,9 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "yarn run build:demo && eleventy",
-    "build:demo": "cd annotator && yarn run web:build",
-    "serve": "yarn run build:demo && eleventy --serve",
+    "build": "yarn run build:submodule && eleventy",
+    "build:submodule": "cd annotator && yarn run web:build && yarn run docs --theme ../typedoc_theme",
+    "serve": "yarn run build:submodule && eleventy --serve",
     "postinstall": "cd annotator && yarn install"
   },
   "repository": {

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>Apache Annotator (incubating)</title>
+
+    <meta property="og:title" content="Apache Annotator" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://annotator.apache.org/" />
+    <meta property="og:image:url" content="https://annotator.apache.org/images/annotator-logo.svg" />
+    <meta property="og:image:alt" content="Apache Annotator (incubating) logo" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="alternate" title="DOAP" href="doap.rdf" type="application/rdf+xml" />
+
+    <link rel="stylesheet" href="//semantic-ui.com/dist/semantic.min.css" />
+  </head>
+
+  <body>
+    {{> page_header}}
+    <div class="ui basic segment container">
+      {{!-- This template is used both in our TypeDoc theme, and in 11ty --}}
+      {{!-- For TypeDoc, we get the content as a handlebars partial block --}}
+      {{#> @partial-block}}
+        {{!-- For 11ty, we get the content as a variable --}}
+        {{{content}}}
+      {{/@partial-block}}
+    </div>
+    {{> page_footer}}
+  </body>
+</html>
