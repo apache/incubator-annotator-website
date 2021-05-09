@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<title>Apache Annotator (incubating)</title>
+	<meta property="og:title" content="Apache Annotator" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://annotator.apache.org/" />
+	<meta property="og:image:url" content="https://annotator.apache.org/images/annotator-logo.svg" />
+	<meta property="og:image:alt" content="Apache Annotator (incubating) logo" />
+	<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+	<meta name="msapplication-TileColor" content="#da532c">
+	<meta name="theme-color" content="#ffffff">
+	<link rel="alternate" title="DOAP" href="doap.rdf" type="application/rdf+xml" />
+	<link rel="stylesheet" href="//semantic-ui.com/dist/semantic.min.css" />
+</head>
+<body>
+<div class="ui borderless stackable top attached main menu">
+	<div class="ui container">
+		<a class="item" href="/" style="color: rgba(0,0,0,.87);">
+			<img class="ui small image" src="/images/annotator-logo.svg" alt="Apache Annotator (incubating)" />
+		</a>
+		<div class="right menu">
+			<a class="item" href="/demo/"><span class="ui positive button">Demo!</span></a>
+			<a class="item" rel="external" href="https://www.npmjs.com/package/apache-annotator">NPM</a>
+			<a class="item" rel="external" href="https://github.com/apache?q=annotator#org-repositories">Code</a>
+			<a class="item" rel="external" href="https://github.com/apache/incubator-annotator/issues">Issues</a>
+			<a class="active item" href="/docs/">Docs</a>
+			<a class="item" rel="external" href="https://mail-archives.apache.org/mod_mbox/incubator-annotator-dev/">Mailing List</a>
+		</div>
+	</div>
+</div>
+<div class="ui basic segment container">
+	<link rel="stylesheet" href="../assets/css/main.css">
+	<script async src="../assets/js/search.js" id="search-script"></script>
+	<aside>
+		<style>
+      #tsd-search {
+        position: relative;
+      }
+      #tsd-search input {
+        border: 1px solid grey;
+        border-radius: 2px;
+        padding: 0.2em;
+      }
+      #tsd-search .results {
+        z-index: 1;
+        position: absolute;
+      }
+    </style>
+		<div id="tsd-search" data-index="../assets/js/search.json" data-base="..">
+			<div>
+				<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+				<input id="tsd-search-field" type="text" />
+			</div>
+			<ul class="results">
+				<li class="state loading">Preparing search index...</li>
+				<li class="state failure">The search index is not available</li>
+			</ul>
+		</div>
+	</aside>
+	<header style="margin: 2em 0;" id="typedoc-title">
+		<style>
+      #typedoc-title h1 {
+        margin-top: 0;
+      }
+    </style>
+		<ul class="tsd-breadcrumb">
+			<li>
+				<a href="../index.html">apache-annotator</a>
+			</li>
+			<li>
+				<a href="../modules/selector.html">selector</a>
+			</li>
+			<li>
+				<a href="selector.chunker.html">Chunker</a>
+			</li>
+		</ul>
+		<h1>Interface Chunker&lt;TChunk&gt;</h1>
+	</header>
+	<main>
+		<div class="row">
+			<div class="col-8 col-content">
+				<section class="tsd-panel tsd-comment">
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Presents the pieces of text contained in some underlying ‘file’ as a sequence
+							of <a href="selector.chunk.html">Chunk</a>s.</p>
+						</div>
+						<p>Rather than presenting a list of all pieces, the <code>Chunker</code> provides methods
+							to walk through the file piece by piece. This permits implementations to read
+						and convert the file to <code>Chunk</code>s lazily.</p>
+						<p>For those familiar with the DOM APIs, it is similar to a NodeIterator (but
+						unlike NodeIterator, it has no concept of being ‘before’ or ‘after’ a chunk).</p>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-type-parameters">
+					<h3>Type parameters</h3>
+					<ul class="tsd-type-parameters">
+						<li>
+							<h4>TChunk<span class="tsd-signature-symbol">: </span><a href="selector.chunk.html" class="tsd-signature-type" data-tsd-kind="Interface">Chunk</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>(sub)type of <code>Chunk</code> being used.</p>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-hierarchy">
+					<h3>Hierarchy</h3>
+					<ul class="tsd-hierarchy">
+						<li>
+							<span class="target">Chunker</span>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel-group tsd-index-group">
+					<h2>Index</h2>
+					<section class="tsd-panel tsd-index-panel">
+						<div class="tsd-index-content">
+							<section class="tsd-index-section ">
+								<h3>Properties</h3>
+								<ul class="tsd-index-list">
+									<li class="tsd-kind-property tsd-parent-kind-interface"><a href="selector.chunker.html#currentchunk" class="tsd-kind-icon">current<wbr>Chunk</a></li>
+								</ul>
+							</section>
+							<section class="tsd-index-section ">
+								<h3>Methods</h3>
+								<ul class="tsd-index-list">
+									<li class="tsd-kind-method tsd-parent-kind-interface"><a href="selector.chunker.html#nextchunk" class="tsd-kind-icon">next<wbr>Chunk</a></li>
+									<li class="tsd-kind-method tsd-parent-kind-interface"><a href="selector.chunker.html#precedescurrentchunk" class="tsd-kind-icon">precedes<wbr>Current<wbr>Chunk</a></li>
+									<li class="tsd-kind-method tsd-parent-kind-interface"><a href="selector.chunker.html#previouschunk" class="tsd-kind-icon">previous<wbr>Chunk</a></li>
+								</ul>
+							</section>
+						</div>
+					</section>
+				</section>
+				<section class="tsd-panel-group tsd-member-group ">
+					<h2>Properties</h2>
+					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+						<a name="currentchunk" class="tsd-anchor"></a>
+						<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> current<wbr>Chunk</h3>
+						<div class="tsd-signature tsd-kind-icon">current<wbr>Chunk<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">TChunk</span></div>
+						<aside class="tsd-sources">
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The chunk currently being pointed at.</p>
+							</div>
+							<p>Initially, this should normally be the first chunk in the file.</p>
+						</div>
+					</section>
+				</section>
+				<section class="tsd-panel-group tsd-member-group ">
+					<h2>Methods</h2>
+					<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
+						<a name="nextchunk" class="tsd-anchor"></a>
+						<h3>next<wbr>Chunk</h3>
+						<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+							<li class="tsd-signature tsd-kind-icon">next<wbr>Chunk<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">TChunk</span></li>
+						</ul>
+						<ul class="tsd-descriptions">
+							<li class="tsd-description">
+								<aside class="tsd-sources">
+								</aside>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>Point <a href="selector.chunker.html#currentchunk">currentChunk</a> at the chunk following it, and return that chunk.
+											If there are no chunks following it, keep <code>currentChunk</code> unchanged and
+										return null.</p>
+									</div>
+								</div>
+								<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">TChunk</span></h4>
+							</li>
+						</ul>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
+						<a name="precedescurrentchunk" class="tsd-anchor"></a>
+						<h3>precedes<wbr>Current<wbr>Chunk</h3>
+						<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+							<li class="tsd-signature tsd-kind-icon">precedes<wbr>Current<wbr>Chunk<span class="tsd-signature-symbol">(</span>chunk<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TChunk</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+						</ul>
+						<ul class="tsd-descriptions">
+							<li class="tsd-description">
+								<aside class="tsd-sources">
+								</aside>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>Test if a given <code>chunk</code> is before the <a href="selector.chunker.html#currentchunk">current chunk</a>.</p>
+									</div>
+									<p>Returns true if <code>chunk</code> is before <code>this.currentChunk</code>, false otherwise
+									(i.e. if <code>chunk</code> follows it or is the current chunk).</p>
+									<p>The given <code>chunk</code> need not necessarily be obtained from the same <code>Chunker</code>,
+										but the chunkers would need to represent the same file. Otherwise behaviour
+									is unspecified (an implementation might throw or just return <code>false</code>).</p>
+								</div>
+								<h4 class="tsd-parameters-title">Parameters</h4>
+								<ul class="tsd-parameters">
+									<li>
+										<h5>chunk: <span class="tsd-signature-type">TChunk</span></h5>
+										<div class="tsd-comment tsd-typography">
+											<p>A chunk, typically obtained from the same <code>Chunker</code>.</p>
+										</div>
+									</li>
+								</ul>
+								<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+							</li>
+						</ul>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
+						<a name="previouschunk" class="tsd-anchor"></a>
+						<h3>previous<wbr>Chunk</h3>
+						<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+							<li class="tsd-signature tsd-kind-icon">previous<wbr>Chunk<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">TChunk</span></li>
+						</ul>
+						<ul class="tsd-descriptions">
+							<li class="tsd-description">
+								<aside class="tsd-sources">
+								</aside>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>Point <a href="selector.chunker.html#currentchunk">currentChunk</a> at the chunk preceding it, and return that chunk.
+											If there are no chunks preceding it, keep <code>currentChunk</code> unchanged and
+										return null.</p>
+									</div>
+								</div>
+								<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">TChunk</span></h4>
+							</li>
+						</ul>
+					</section>
+				</section>
+			</div>
+			<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+				<nav class="tsd-navigation primary">
+					<ul>
+						<li class=" ">
+							<a href="../index.html">Exports</a>
+						</li>
+						<li class=" tsd-kind-module">
+							<a href="../modules/dom.html">dom</a>
+						</li>
+						<li class="current tsd-kind-module">
+							<a href="../modules/selector.html">selector</a>
+						</li>
+					</ul>
+				</nav>
+				<nav class="tsd-navigation secondary menu-sticky">
+					<ul class="before-current">
+						<li class=" tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter">
+							<a href="selector.chunk.html" class="tsd-kind-icon">Chunk</a>
+						</li>
+						<li class=" tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter">
+							<a href="selector.chunkrange.html" class="tsd-kind-icon">Chunk<wbr>Range</a>
+						</li>
+					</ul>
+					<ul class="current">
+						<li class="current tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter">
+							<a href="selector.chunker.html" class="tsd-kind-icon">Chunker</a>
+							<ul>
+								<li class=" tsd-kind-property tsd-parent-kind-interface">
+									<a href="selector.chunker.html#currentchunk" class="tsd-kind-icon">current<wbr>Chunk</a>
+								</li>
+								<li class=" tsd-kind-method tsd-parent-kind-interface">
+									<a href="selector.chunker.html#nextchunk" class="tsd-kind-icon">next<wbr>Chunk</a>
+								</li>
+								<li class=" tsd-kind-method tsd-parent-kind-interface">
+									<a href="selector.chunker.html#precedescurrentchunk" class="tsd-kind-icon">precedes<wbr>Current<wbr>Chunk</a>
+								</li>
+								<li class=" tsd-kind-method tsd-parent-kind-interface">
+									<a href="selector.chunker.html#previouschunk" class="tsd-kind-icon">previous<wbr>Chunk</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+					<ul class="after-current">
+						<li class=" tsd-kind-interface tsd-parent-kind-module">
+							<a href="selector.cssselector.html" class="tsd-kind-icon">Css<wbr>Selector</a>
+						</li>
+						<li class=" tsd-kind-interface tsd-parent-kind-module">
+							<a href="selector.describetextquoteoptions.html" class="tsd-kind-icon">Describe<wbr>Text<wbr>Quote<wbr>Options</a>
+						</li>
+						<li class=" tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter">
+							<a href="selector.matcher.html" class="tsd-kind-icon">Matcher</a>
+						</li>
+						<li class=" tsd-kind-interface tsd-parent-kind-module">
+							<a href="selector.rangeselector.html" class="tsd-kind-icon">Range<wbr>Selector</a>
+						</li>
+						<li class=" tsd-kind-interface tsd-parent-kind-module">
+							<a href="selector.selector-1.html" class="tsd-kind-icon">Selector</a>
+						</li>
+						<li class=" tsd-kind-interface tsd-parent-kind-module">
+							<a href="selector.textpositionselector.html" class="tsd-kind-icon">Text<wbr>Position<wbr>Selector</a>
+						</li>
+						<li class=" tsd-kind-interface tsd-parent-kind-module">
+							<a href="selector.textquoteselector.html" class="tsd-kind-icon">Text<wbr>Quote<wbr>Selector</a>
+						</li>
+						<li class=" tsd-kind-function tsd-parent-kind-module">
+							<a href="../modules/selector.html#chunkequals" class="tsd-kind-icon">chunk<wbr>Equals</a>
+						</li>
+						<li class=" tsd-kind-function tsd-parent-kind-module">
+							<a href="../modules/selector.html#chunkrangeequals" class="tsd-kind-icon">chunk<wbr>Range<wbr>Equals</a>
+						</li>
+						<li class=" tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
+							<a href="../modules/selector.html#describetextposition" class="tsd-kind-icon">describe<wbr>Text<wbr>Position</a>
+						</li>
+						<li class=" tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
+							<a href="../modules/selector.html#describetextquote" class="tsd-kind-icon">describe<wbr>Text<wbr>Quote</a>
+						</li>
+						<li class=" tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
+							<a href="../modules/selector.html#makerefinable" class="tsd-kind-icon">make<wbr>Refinable</a>
+						</li>
+						<li class=" tsd-kind-function tsd-parent-kind-module">
+							<a href="../modules/selector.html#textpositionselectormatcher" class="tsd-kind-icon">text<wbr>Position<wbr>Selector<wbr>Matcher</a>
+						</li>
+						<li class=" tsd-kind-function tsd-parent-kind-module">
+							<a href="../modules/selector.html#textquoteselectormatcher" class="tsd-kind-icon">text<wbr>Quote<wbr>Selector<wbr>Matcher</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</main>
+	<script src="../assets/js/main.js"></script>
+</div>
+<footer class="ui bottom attached segment">
+	<div class="ui container">
+		<div class="ui equal height divided stackable grid">
+			<div class="four wide column">
+				<a class="ui left floated medium image" href="https://apache.org/" target="_blank">
+					<img src="https://incubator.apache.org/images/incubator_feather_egg_logo_sm.png" alt="logo of the Apache Incubator" />
+				</a>
+				<p>
+					<em>Copyright © 2016-2018 The Apache Software Foundation, Licensed under
+						the <a href="https://www.apache.org/licenses/LICENSE-2.0" rel="license external">Apache License, Version 2.0</a>.
+						|
+						<a rel="external" href="https://www.apache.org/foundation/policies/privacy">Privacy Policy</a>
+					</em>
+				</p>
+			</div>
+			<div class="nine wide column">
+				<p>
+				<em>Apache Annotator is an effort undergoing incubation at <a target="_blank" href="https://apache.org/">The Apache Software Foundation (ASF)</a> sponsored by the Apache Incubator PMC. Incubation is required of all newly accepted projects until a further review indicates that the infrastructure, communications, and decision making process have stabilized in a manner consistent with other successful ASF projects. While incubation status is not necessarily a reflection of the completeness or stability of the code, it does indicate that the project has yet to be fully endorsed by the ASF.</em></p>
+				<p><em>Apache®, the names of Apache projects, and the feather logo are either <a rel="external" href="https://www.apache.org/foundation/marks/list/">registered trademarks or trademarks</a> of the Apache Software Foundation in the United States and/or other countries.</em></p>
+			</div>
+			<div class="three wide column">
+				<h4 class="header">The <abbr title="Apache Software Foundation">ASF</abbr></h4>
+				<div class="ui link list">
+					<a class="item" rel="external" href="https://incubator.apache.org/">Apache Incubator</a>
+					<a class="item" rel="external" href="https://www.apache.org/">About the ASF</a>
+					<a class="item" rel="external" href="https://www.apache.org/events/current-event">Events</a>
+					<a class="item" rel="external" href="https://www.apache.org/foundation/thanks.html">Thanks</a>
+					<a class="item" rel="external" href="https://www.apache.org/foundation/sponsorship.html">Become a Sponsor</a>
+					<a class="item" rel="external" href="https://www.apache.org/security/">Security</a>
+					<a class="item" rel="external" href="https://www.apache.org/licenses/">License</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+</body>
+</html>
