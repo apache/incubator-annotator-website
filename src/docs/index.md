@@ -1,6 +1,6 @@
 ---
 title: Documentation
-layout: default
+layout: docs
 ---
 
 We're working on some initial documentation for getting started with Apache

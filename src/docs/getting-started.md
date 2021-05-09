@@ -1,6 +1,6 @@
 ---
 title: Getting Started
-layout: default
+layout: docs
 ---
 
 Please checkout the [demo](/demo/) for now, but we'll explain it here soon.
