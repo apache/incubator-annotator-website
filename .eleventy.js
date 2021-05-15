@@ -23,6 +23,13 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addShortcode('eq', function(a, b) { return a === b });
   eleventyConfig.addShortcode('not-eq', function(a, b) { return a !== b });
 
+  // To add table of contents to docs: {{{ toc content }}}
+  const markdownIt = require('markdown-it');
+  const markdownItAnchor = require('markdown-it-anchor');
+  eleventyConfig.setLibrary('md', markdownIt().use(markdownItAnchor));
+  const pluginTOC = require('eleventy-plugin-toc');
+  eleventyConfig.addPlugin(pluginTOC, { tags: ['h2', 'h3'] });
+
   return {
     dir: {
       input: 'src',

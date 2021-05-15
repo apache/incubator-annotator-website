@@ -7,6 +7,22 @@ isDocs: true
 
 <main class="ui basic segment container">
   <h1>{{title}}</h1>
-
-  {{{content}}}
+  <div class="ui mobile reversed stackable grid">
+    <div class="twelve wide column">
+      {{{content}}}
+    </div>
+    <aside class="ui four wide column">
+      <style>
+        .toc ol {
+          list-style-type: none;
+          padding-left: 1em;
+        }
+        .toc ol li {
+          margin: 0.25em 0;
+        }
+      </style>
+      <h1 class="ui small dividing header" style="margin: 0;">Contents</h1>
+      {{{ toc content }}}
+    </aside>
+  </div>
 </main>
