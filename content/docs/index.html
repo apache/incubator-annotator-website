@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html prefix="og: http://ogp.me/ns#">
+<html prefix="og: http://ogp.me/ns#" class="default">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -22,6 +22,7 @@
 
     <link rel="alternate" title="DOAP" href="doap.rdf" type="application/rdf+xml" />
 
+
     <link rel="stylesheet" href="//semantic-ui.com/dist/semantic.min.css" />
   </head>
 
@@ -32,31 +33,116 @@
               <img class="ui small image" src="/images/annotator-logo.svg" alt="Apache Annotator (incubating)" />
             </a>
     
-            <div class="right menu">
+            <nav class="right menu">
+              <a class="item" href="/">Home</a>
               <a class="item" href="/demo/"><span class="ui positive button">Demo!</span></a>
-              <a class="item" rel="external" href="https://www.npmjs.com/package/apache-annotator">NPM</a>
-              <a class="item" rel="external" href="https://github.com/apache?q=annotator#org-repositories">Code</a>
-              <a class="item" rel="external" href="https://github.com/apache/incubator-annotator/issues">Issues</a>
-              <a class="active item" href="/docs/">Docs</a>
-              <a class="item" rel="external" href="https://mail-archives.apache.org/mod_mbox/incubator-annotator-dev/">Mailing List</a>
-            </div>
+              <a class="active item" href="/docs/">Documentation</a>
+              <a class="item" rel="external" href="https://github.com/apache/incubator-annotator">Code&nbsp;<i class="small external icon"></i></a>
+              <a class="item" rel="external" href="https://github.com/apache/incubator-annotator/issues">Issue tracker&nbsp;<i class="small external icon"></i></a>
+            </nav>
           </div>
         </div>
     <div class="ui basic segment container">
-              <div class="ui grid">
-        <div class="three wide column">
-          <div class="ui vertical secondary menu">
-            <div class="item"><a href="/docs/getting-started/">Getting Started</a></div>
-            <div class="active item"><a href="/docs/">Documentation</a></div>
-          </div>
-        </div>
-        <div class="nine wide column">
-          <p>We're working on some initial documentation for getting started with Apache
-Annotator, and to help folks understand how it fits in their projects.</p>
-<p>Stay tuned for more!</p>
+        
+<nav class="ui secondary stackable pointing menu" style="justify-content: center;">
+  <a href="/docs/" class="active item">Overview</a>
+  <a href="/docs/getting-started/" class="item">Getting Started</a>
+  <a href="/docs/develop/" class="item">Develop</a>
+  <a href="/docs/api/" class="item">API reference</a>
+</nav>
 
-        </div>
-      </div>
+<main class="ui basic segment container">
+  <h1 style="margin-bottom: 2rem">Overview</h1>
+  <div class="ui mobile reversed stackable grid">
+    <div class="twelve wide column">
+      <p>Apache Annotator provides software modules to facilitate annotation tools in web browser environments. For example, it could be used in web-based document viewers or browser extensions that let users highlight phrases and place virtual sticky notes on the pages they visit.</p>
+<p>The modules are written in <a href="https://www.typescriptlang.org/">TypeScript</a>, and distributed as Javascript/ECMAScript modules <a href="https://www.npmjs.com/org/apache-annotator">on NPM</a>. Read further for a high-level description of the code functionality, or <a href="/docs/getting-started/">get started</a> with it directly!</p>
+<h2 id="what-is-in-the-box">What is in the box</h2>
+<h3 id="selector-tools">Selector tools</h3>
+<p>The main functionality Apache Annotator offers is to map a <a href="https://www.w3.org/TR/2017/REC-annotation-model-20170223/#selector">Web Annotation Selector</a> to the segment of a document it corresponds to, sometimes called ‘anchoring’ a Selector; and, vice versa, to create a Selector that describes a given selection in the document precisely and unambiguously, such that other Web Annotation software knows exactly where it points to. The purpose of Selectors is to point at any part of a document without requiring any modification of the document itself.</p>
+<p>The <a href="https://www.w3.org/TR/annotation-model">W3C Web Annotation Data Model</a> outlines a number of different selectors types, to accomodate various use case on different types of documents and selections (e.g. an annotation may target a phrase of text, or a region within an image). The table below shows the full list of defined types and the implementation status of each.</p>
+<table>
+<thead>
+<tr>
+<th>Selector</th>
+<th>Description</th>
+<th>Implemented?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://www.w3.org/TR/annotation-model/#fragment-selector">Fragment</a></td>
+<td>Uses the fragment part of an IRI defined by the representation’s media type.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><a href="https://www.w3.org/TR/annotation-model/#css-selector">CSS</a></td>
+<td>CSS Selectors allow for a wide variety of well supported ways to describe the path to an element in a web page.</td>
+<td><a href="/docs/api/modules/dom.html#createcssselectormatcher">Partly</a></td>
+</tr>
+<tr>
+<td><a href="https://www.w3.org/TR/annotation-model/#xpath-selector">XPath</a></td>
+<td>Implements an XPath based selection.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><a href="https://www.w3.org/TR/annotation-model/#text-quote-selector">Text Quote</a></td>
+<td>This Selector describes a range of text, including some of the text immediately before (a prefix) and after (a suffix) it to distinguish between multiple copies of the same sequence of characters.</td>
+<td>Yes, both <a href="/docs/api/modules/dom.html#describetextquote">for DOM</a> and <a href="/docs/api/modules/selector.html#textquoteselectormatcher">generic</a></td>
+</tr>
+<tr>
+<td><a href="https://www.w3.org/TR/annotation-model/#text-position-selector">Text Position</a></td>
+<td>This Selector describes a range of text by recording the start and end positions of the selection in the stream.</td>
+<td>Yes, both <a href="/docs/api/modules/dom.html#describetextposition">for DOM</a> and <a href="/docs/api/modules/selector.html#textpositionselectormatcher">generic</a></td>
+</tr>
+<tr>
+<td><a href="https://www.w3.org/TR/annotation-model/#data-position-selector">Data Position</a></td>
+<td>Similar to the Text Position Selector, the Data Position Selector uses the same properties but works at the byte in bitstream level rather than the character in text level.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><a href="https://www.w3.org/TR/annotation-model/#svg-selector">SVG</a></td>
+<td>An SvgSelector defines an area through the use of the Scalable Vector Graphics standard.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><a href="https://www.w3.org/TR/annotation-model/#range-selector">Range</a></td>
+<td>A Range Selector can be used to identify the beginning and the end of the selection by using other Selectors.</td>
+<td>Yes, <a href="/docs/api/modules/dom.html#makecreaterangeselectormatcher">for DOM</a></td>
+</tr>
+<tr>
+<td><a href="https://www.w3.org/TR/annotation-model/#refinement-of-selection">Refinement</a></td>
+<td>Select a part of a selection, rather than as a selection of the complete resource.</td>
+<td><a href="/docs/api/modules/selector.html#makerefinable">Yes</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="web-annotation-json-validator">Web Annotation JSON validator</h3>
+<p>The source code also includes a script for validating Web Annotation Data Model JSON documents against the data model schema. Having <a href="/docs/develop/#install-from-source">installed from source</a>, one can run:</p>
+<pre><code class="language-sh">$ yarn validate --url https://raw.githubusercontent.com/w3c/web-annotation-tests/master/tools/samples/correct/anno1.json
+</code></pre>
+<p>With the <code>--url</code> option you can pass in a URL or a local path to a JSON file.</p>
+<p>See some <a href="https://github.com/w3c/web-annotation-tests/tree/master/tools/samples">example JSON files</a> from the W3C. Note that this validator only tests the data model is followed, and not e.g. whether its target actually exists.</p>
+<h2 id="what-apache-annotator-it-not">What Apache Annotator it not</h2>
+<p>Apache Annotator is <strong>not an all-in-one annotation tool</strong>; rather, it <em>helps others create</em> annotation tools. It does not have opinions regarding in which database on which computer annotations are stored, nor how they are made, exchanged or displayed. Those questions are considered application-specific and left to the developer. Our goal is that the developer can focus on exactly those questions, and forget about issues that are common among annotation tools: finding the part in the document that is being annotated, dealing with changes in the annotated document, ensuring compatibility with other tools, and so on.</p>
+
+    </div>
+    <aside class="ui four wide column">
+      <style>
+        .toc ol {
+          list-style-type: none;
+          padding-left: 1em;
+        }
+        .toc ol li {
+          margin: 0.25em 0;
+        }
+      </style>
+      <h1 class="ui small dividing header" style="margin: 0;">Contents</h1>
+      <nav class="toc">
+        <ol><li><a href="#what-is-in-the-box">What is in the box</a><ol><li><a href="#selector-tools">Selector tools</a></li><li><a href="#web-annotation-json-validator">Web Annotation JSON validator</a></li></ol></li><li><a href="#what-apache-annotator-it-not">What Apache Annotator it not</a></li></ol></nav>
+    </aside>
+  </div>
+</main>
 
     </div>
         <footer class="ui bottom attached segment">

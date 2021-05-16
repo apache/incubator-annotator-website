@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html prefix="og: http://ogp.me/ns#">
+<html prefix="og: http://ogp.me/ns#" class="default">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -18,6 +18,15 @@
 	<meta name="msapplication-TileColor" content="#da532c">
 	<meta name="theme-color" content="#ffffff">
 	<link rel="alternate" title="DOAP" href="doap.rdf" type="application/rdf+xml" />
+	<link rel="stylesheet" href="../assets/css/main.css">
+	<style>
+      /* Avoid TypeDoc style messing up the page around it. Why oh why did scoped CSS die? */
+      .ui.container {
+        padding: unset;
+      }
+    </style>
+	<script async src="../assets/js/search.js" id="search-script"></script>
+	<script defer src="../assets/js/main.js"></script>
 	<link rel="stylesheet" href="//semantic-ui.com/dist/semantic.min.css" />
 </head>
 <body>
@@ -26,65 +35,84 @@
 		<a class="item" href="/" style="color: rgba(0,0,0,.87);">
 			<img class="ui small image" src="/images/annotator-logo.svg" alt="Apache Annotator (incubating)" />
 		</a>
-		<div class="right menu">
+		<nav class="right menu">
+			<a class="item" href="/">Home</a>
 			<a class="item" href="/demo/"><span class="ui positive button">Demo!</span></a>
-			<a class="item" rel="external" href="https://www.npmjs.com/package/apache-annotator">NPM</a>
-			<a class="item" rel="external" href="https://github.com/apache?q=annotator#org-repositories">Code</a>
-			<a class="item" rel="external" href="https://github.com/apache/incubator-annotator/issues">Issues</a>
-			<a class="active item" href="/docs/">Docs</a>
-			<a class="item" rel="external" href="https://mail-archives.apache.org/mod_mbox/incubator-annotator-dev/">Mailing List</a>
-		</div>
+			<a class="active item" href="/docs/">Documentation</a>
+			<a class="item" rel="external" href="https://github.com/apache/incubator-annotator">Code&nbsp;<i class="small external icon"></i></a>
+			<a class="item" rel="external" href="https://github.com/apache/incubator-annotator/issues">Issue tracker&nbsp;<i class="small external icon"></i></a>
+		</nav>
 	</div>
 </div>
 <div class="ui basic segment container">
-	<link rel="stylesheet" href="../assets/css/main.css">
-	<script async src="../assets/js/search.js" id="search-script"></script>
-	<aside>
-		<style>
-      #tsd-search {
-        position: relative;
-      }
-      #tsd-search input {
-        border: 1px solid grey;
-        border-radius: 2px;
-        padding: 0.2em;
-      }
-      #tsd-search .results {
-        z-index: 1;
-        position: absolute;
-      }
-    </style>
-		<div id="tsd-search" data-index="../assets/js/search.json" data-base="..">
-			<div>
-				<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
-				<input id="tsd-search-field" type="text" />
+	<nav class="ui secondary stackable pointing menu" style="justify-content: center;">
+		<a href="/docs/" class="item">Overview</a>
+		<a href="/docs/getting-started/" class="item">Getting Started</a>
+		<a href="/docs/develop/" class="item">Develop</a>
+		<a href="/docs/api/" class="active item">API reference</a>
+	</nav>
+	<div class="ui basic segment container">
+		<div class="ui stackable grid">
+			<div class="eight wide column">
+				<h1>
+					API reference
+				</h1>
 			</div>
-			<ul class="results">
-				<li class="state loading">Preparing search index...</li>
-				<li class="state failure">The search index is not available</li>
-			</ul>
+			<div class="eight wide column">
+				<aside>
+					<style>
+            #tsd-search {
+              position: relative;
+              text-align: right;
+            }
+            #tsd-search input {
+              border: 1px solid grey;
+              border-radius: 4px;
+              padding: 0.4em;
+            }
+            #tsd-search label,
+            #tsd-search label::before,
+            #tsd-search input {
+              vertical-align: middle;
+            }
+            #tsd-search .results {
+              z-index: 1;
+              position: absolute;
+              box-shadow: 0px 20px 20px #00000066;
+            }
+          </style>
+					<div id="tsd-search" data-index="../assets/js/search.json" data-base="..">
+						<div>
+							<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+							<input id="tsd-search-field" type="text" />
+						</div>
+						<ul class="results">
+							<li class="state loading">Preparing search index...</li>
+							<li class="state failure">The search index is not available</li>
+						</ul>
+					</div>
+				</aside>
+			</div>
 		</div>
-	</aside>
-	<header style="margin: 2em 0;" id="typedoc-title">
-		<style>
-      #typedoc-title h1 {
-        margin-top: 0;
-      }
-    </style>
-		<ul class="tsd-breadcrumb">
-			<li>
-				<a href="../index.html">apache-annotator</a>
-			</li>
-			<li>
-				<a href="../modules/selector.html">selector</a>
-			</li>
-			<li>
-				<a href="selector.chunkrange.html">ChunkRange</a>
-			</li>
-		</ul>
-		<h1>Interface ChunkRange&lt;TChunk&gt;</h1>
-	</header>
-	<main>
+		<header style="margin: 2em 0;" id="typedoc-title">
+			<style>
+        #typedoc-title h1 {
+          margin-top: 0;
+        }
+      </style>
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../index.html">apache-annotator</a>
+				</li>
+				<li>
+					<a href="../modules/selector.html">selector</a>
+				</li>
+				<li>
+					<a href="selector.chunkrange.html">ChunkRange</a>
+				</li>
+			</ul>
+			<h1>Interface ChunkRange&lt;TChunk&gt;</h1>
+		</header>
 		<div class="row">
 			<div class="col-8 col-content">
 				<section class="tsd-panel tsd-comment">
@@ -250,8 +278,7 @@
 				</nav>
 			</div>
 		</div>
-	</main>
-	<script src="../assets/js/main.js"></script>
+	</div>
 </div>
 <footer class="ui bottom attached segment">
 	<div class="ui container">

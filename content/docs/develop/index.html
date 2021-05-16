@@ -46,81 +46,47 @@
         
 <nav class="ui secondary stackable pointing menu" style="justify-content: center;">
   <a href="/docs/" class="item">Overview</a>
-  <a href="/docs/getting-started/" class="active item">Getting Started</a>
-  <a href="/docs/develop/" class="item">Develop</a>
+  <a href="/docs/getting-started/" class="item">Getting Started</a>
+  <a href="/docs/develop/" class="active item">Develop</a>
   <a href="/docs/api/" class="item">API reference</a>
 </nav>
 
 <main class="ui basic segment container">
-  <h1 style="margin-bottom: 2rem">Getting Started</h1>
+  <h1 style="margin-bottom: 2rem">Develop Apache Annotator</h1>
   <div class="ui mobile reversed stackable grid">
     <div class="twelve wide column">
-      <h2 id="install-via-npm">Install via NPM</h2>
-<p>Currently we only support installation through NPM packages. You will need to use a bundler (such as <a href="https://webpack.js.org/">webpack</a>) to use the modules in a web browser.</p>
-<p>The project is made up of multiple modules. Each module is <a href="https://www.npmjs.com/org/apache-annotator">available on the NPM registry</a> as individual packages in the <code>@apache-annotator</code> scope, and all of them together in the <a href="https://www.npmjs.com/package/apache-annotator"><code>apache-annotator</code></a> ‘meta-package’. You can install either and then import packages in your code as <code>@apache-annotator/package</code> or <code>apache-annotator/package</code>, respectively.</p>
-<p>For example:</p>
-<pre><code class="language-sh">$ yarn add @apache-annotator/dom
+      <h2 id="install-from-source">Install from source</h2>
+<p>This project’s source code is available directly <a href="https://gitbox.apache.org/repos/asf?p=incubator-annotator.git">from the ASF</a> or <a href="https://github.com/apache/incubator-annotator">via GitHub</a>.</p>
+<h3 id="requirements">Requirements</h3>
+<p>If you’d like to code on the project, you will need the following:</p>
+<ul>
+<li><a href="https://git-scm.com/">git</a></li>
+<li><a href="https://nodejs.org">node</a> version ^12.20 || ^14.15 || ^15.4</li>
+<li><a href="https://www.yarnpkg.com/">yarn</a> version ^1.5</li>
+</ul>
+<h3 id="install">Install</h3>
+<p>To retrieve the code using git:</p>
+<pre><code>$ git clone https://gitbox.apache.org/repos/asf/incubator-annotator.git apache-annotator
 </code></pre>
-<p>…with in your code:</p>
-<pre><code class="language-js">import { highlightRange } from '@apache-annotator/dom';
+<p>Then install dependencies using yarn:</p>
+<pre><code class="language-sh">$ cd apache-annotator
+$ yarn install
 </code></pre>
-<h2 id="install-from-source">Install from source</h2>
-<p>See <a href="/docs/develop/">Develop</a>.</p>
-<h2 id="usage-example%3A-a-text-quote-highlighter">Usage example: a text quote highlighter</h2>
-<p>A typical goal of web annotation is to let users highlight a phrase of text in a web page, and perhaps add a note to it. The example code below enables this use case.</p>
-<p>First, we define the way to describe the user’s selection as a TextQuoteSelector.</p>
-<pre><code class="language-js">import { describeTextQuote } from '@apache-annotator/dom';
-
-async function describeCurrentSelection() {
-  const userSelection = window.getSelection()?.getRangeAt(0);
-  if (!userSelection || userSelection.isCollapsed) return;
-  return describeTextQuote(userSelection);
-}
+<h2 id="build">Build</h2>
+<p>To compile (‘transpile’) the code:</p>
+<pre><code class="language-sh">$ yarn build
 </code></pre>
-<p>If the user had selected the word <em>“ipsum”</em> in the befamed <em>“Lorem ipsum dolor amet …”</em>, the return value of describeCurrentSelection() might resolve to this:</p>
-<pre><code>{
-  type: 'TextQuoteSelector',
-  exact: 'ipsum',
-  prefix: 'Lorem ',
-  suffix: ' dolor'
-}
+<p>For each module, the TypeScript source code is in <code>packages/…/src</code> and the Javascript is output in <code>packages/…/lib</code>.</p>
+<p>To use your local build of the code in an application that depends on annotator, have a look at the <a href="https://yarnpkg.com/cli/link"><code>yarn link</code></a> or <a href="https://docs.npmjs.com/cli/v7/commands/npm-link"><code>npm link</code></a> command.</p>
+<h2 id="play">Play</h2>
+<p>To run a webserver running <a href="https://annotator.apache.org/demo/">the demo</a>:</p>
+<pre><code>$ yarn start
 </code></pre>
-<p>The <em>prefix</em> and <em>suffix</em> attributes are there to know which of multiple occurrences of <em>“ipsum”</em> the Selector points to. They will include just enough surrounding words to make the selector unambiguous.</p>
-<p>Next, we define roughly the inverse function: given a TextQuoteSelector, we highlight the text it points to.</p>
-<pre><code class="language-js">import { createTextQuoteSelectorMatcher, highlightRange } from '@apache-annotator/dom';
-
-async function highlightSelectorTarget(textQuoteSelector) {
-  // Search in the whole document
-  const scope = document.createRange();
-  scope.selectNodeContents(document);
-
-  const matches = createTextQuoteSelectorMatcher(textQuoteSelector)(scope);
-  for await (const match of matches) {
-    highlightRange(match);
-  }
-}
+<p>Now open <code>http://localhost:8080/</code> (or whichever address the command prints) in your web browser to play with the demo. The server continuously rebuilds and hot-reloads to the source code after any edits, so you can directly try out any changes you make to the features it demonstrates.</p>
+<h2 id="run-tests">Run tests</h2>
+<p>This runs the tests for all packages and reports their code coverage:</p>
+<pre><code class="language-sh">$ yarn test
 </code></pre>
-<p>As the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for-await...of"><code>for await … of</code></a> statement suggests, the matcher does not return just one match, but a stream (an async iterable) of matches. This is because it cannot be certain that a selector only has a single match (even when it includes a prefix &amp; suffix, perhaps the document changed!).</p>
-<p>We could use the functions defined above in many ways; keeping highlighted quotes in local storage, or in one’s bookmarks, or sharing them with others, and so on. For this example, we keep it simple and highlight each selection upon release of the mouse button; and store the selector to make it appear again after a page reload.</p>
-<pre><code class="language-js">document.addEventListener('mouseup', async () =&gt; {
-  const selector = await describeCurrentSelection();
-  const existingSelectors = JSON.parse(localStorage[document.URL] || '[]');
-  localStorage[document.URL] = JSON.stringify([...existingSelectors, selector]);
-  await highlightSelectorTarget(selector);
-});
-
-// Highlight the last selection that was stored, if any.
-async function highlightStoredSelectors() {
-  if (localStorage[document.URL]) {
-    const selectors = JSON.parse(localStorage[document.URL]);
-    for (const selector of selectors) {
-      await highlightSelectorTarget(selector);
-    }
-  }
-}
-highlightStoredSelectors();
-</code></pre>
-<p>To see similar pieces of code in action, have a look at <a href="/demo/">the demo</a>.</p>
 
     </div>
     <aside class="ui four wide column">
@@ -135,7 +101,7 @@ highlightStoredSelectors();
       </style>
       <h1 class="ui small dividing header" style="margin: 0;">Contents</h1>
       <nav class="toc">
-        <ol><li><a href="#install-via-npm">Install via NPM</a></li><li><a href="#install-from-source">Install from source</a></li><li><a href="#usage-example%3A-a-text-quote-highlighter">Usage example: a text quote highlighter</a></li></ol></nav>
+        <ol><li><a href="#install-from-source">Install from source</a><ol><li><a href="#requirements">Requirements</a></li><li><a href="#install">Install</a></li></ol></li><li><a href="#build">Build</a></li><li><a href="#play">Play</a></li><li><a href="#run-tests">Run tests</a></li></ol></nav>
     </aside>
   </div>
 </main>
