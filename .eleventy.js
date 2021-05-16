@@ -30,6 +30,9 @@ module.exports = function(eleventyConfig) {
   const pluginTOC = require('eleventy-plugin-toc');
   eleventyConfig.addPlugin(pluginTOC, { tags: ['h2', 'h3'] });
 
+  const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+  eleventyConfig.addPlugin(pluginSyntaxHighlight);
+
   return {
     dir: {
       input: 'src',
