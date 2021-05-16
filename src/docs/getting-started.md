@@ -12,13 +12,13 @@ The project is made up of multiple modules. Each module is [available on the NPM
 
 For example:
 
-```sh
+``` shell
 $ yarn add @apache-annotator/dom
 ```
 
 …with in your code:
 
-```js
+``` js
 import { highlightRange } from '@apache-annotator/dom';
 ```
 
@@ -34,7 +34,7 @@ A typical goal of web annotation is to let users highlight a phrase of text in a
 
 First, we define the way to describe the user’s selection as a TextQuoteSelector.
 
-```js
+``` js
 import { describeTextQuote } from '@apache-annotator/dom';
 
 async function describeCurrentSelection() {
@@ -46,7 +46,7 @@ async function describeCurrentSelection() {
 
 If the user had selected the word *“ipsum”* in the befamed *“Lorem ipsum dolor amet …”*, the return value of describeCurrentSelection() might resolve to this:
 
-```
+``` json
 {
   type: 'TextQuoteSelector',
   exact: 'ipsum',
@@ -59,7 +59,7 @@ The *prefix* and *suffix* attributes are there to know which of multiple occurre
 
 Next, we define roughly the inverse function: given a TextQuoteSelector, we highlight the text it points to.
 
-```js
+``` js
 import { createTextQuoteSelectorMatcher, highlightRange } from '@apache-annotator/dom';
 
 async function highlightSelectorTarget(textQuoteSelector) {
@@ -78,7 +78,7 @@ As the [`for await … of`](https://developer.mozilla.org/en-US/docs/Web/JavaScr
 
 We could use the functions defined above in many ways; keeping highlighted quotes in local storage, or in one’s bookmarks, or sharing them with others, and so on. For this example, we keep it simple and highlight each selection upon release of the mouse button; and store the selector to make it appear again after a page reload.
 
-```js
+``` js
 document.addEventListener('mouseup', async () => {
   const selector = await describeCurrentSelection();
   const existingSelectors = JSON.parse(localStorage[document.URL] || '[]');

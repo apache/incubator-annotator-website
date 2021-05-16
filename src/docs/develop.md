@@ -26,7 +26,7 @@ $ git clone https://gitbox.apache.org/repos/asf/incubator-annotator.git apache-a
 
 Then install dependencies using yarn:
 
-```sh
+``` shell
 $ cd apache-annotator
 $ yarn install
 ```
@@ -35,7 +35,7 @@ $ yarn install
 
 To compile (‘transpile’) the code:
 
-```sh
+``` shell
 $ yarn build
 ```
 
@@ -57,6 +57,6 @@ Now open `http://localhost:8080/` (or whichever address the command prints) in y
 
 This runs the tests for all packages and reports their code coverage:
 
-```sh
+``` shell
 $ yarn test
 ```

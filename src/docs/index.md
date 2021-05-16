@@ -34,7 +34,7 @@ The [W3C Web Annotation Data Model](https://www.w3.org/TR/annotation-model) outl
 
 The source code also includes a script for validating Web Annotation Data Model JSON documents against the data model schema. Having [installed from source](/docs/develop/#install-from-source), one can run:
 
-```sh
+``` shell
 $ yarn validate --url https://raw.githubusercontent.com/w3c/web-annotation-tests/master/tools/samples/correct/anno1.json
 ```
 
