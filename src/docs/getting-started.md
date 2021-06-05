@@ -30,9 +30,9 @@ See [Develop](/docs/develop/).
 
 ## Usage example: a text quote highlighter
 
-A typical goal of web annotation is to let users highlight a phrase of text in a web page, and perhaps add a note to it. The example code below enables this use case.
+A typical goal of web annotation is to let users highlight a phrase of text in a web page, and perhaps add a note to it. The example code below creates such a highlighter (without note-taking functionality).
 
-First, we define the way to describe the user’s selection as a TextQuoteSelector.
+First, we define the way to describe the user’s selection as a [TextQuoteSelector](https://www.w3.org/TR/2017/REC-annotation-model-20170223/#text-quote-selector).
 
 ``` js
 import { describeTextQuote } from '@apache-annotator/dom';
@@ -63,11 +63,7 @@ Next, we define roughly the inverse function: given a TextQuoteSelector, we high
 import { createTextQuoteSelectorMatcher, highlightRange } from '@apache-annotator/dom';
 
 async function highlightSelectorTarget(textQuoteSelector) {
-  // Search in the whole document
-  const scope = document.createRange();
-  scope.selectNodeContents(document);
-
-  const matches = createTextQuoteSelectorMatcher(textQuoteSelector)(scope);
+  const matches = createTextQuoteSelectorMatcher(textQuoteSelector)(document.body);
   for await (const match of matches) {
     highlightRange(match);
   }

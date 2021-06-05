@@ -13,7 +13,7 @@ This project’s source code is available directly [from the ASF](https://gitbox
 If you’d like to code on the project, you will need the following:
 
 - [git](https://git-scm.com/)
-- [node](https://nodejs.org) version ^12.20 || ^14.15 || ^15.4
+- [node](https://nodejs.org) version ^12.20 || ^14.15 || ^15.4 || ^16.0
 - [yarn](https://www.yarnpkg.com/) version ^1.5
 
 ### Install
