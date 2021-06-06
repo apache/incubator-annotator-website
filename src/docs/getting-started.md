@@ -10,13 +10,19 @@ Currently we only support installation through NPM packages. You will need to us
 
 The project is made up of multiple modules. Each module is [available on the NPM registry](https://www.npmjs.com/org/apache-annotator) as individual packages in the `@apache-annotator` scope, and all of them together in the [`apache-annotator`](https://www.npmjs.com/package/apache-annotator) ‘meta-package’. You can install either and then import packages in your code as `@apache-annotator/package` or `apache-annotator/package`, respectively.
 
-For example:
+For example, for the latest official release:
 
 ``` shell
 $ yarn add @apache-annotator/dom
 ```
 
-…with in your code:
+For the latest development version, get the `dev` tag. For example:
+
+``` shell
+$ yarn add @apache-annotator/dom@dev
+```
+
+And in your code import what you need:
 
 ``` js
 import { highlightRange } from '@apache-annotator/dom';
