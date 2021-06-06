@@ -24,6 +24,16 @@
 
 
     <link rel="stylesheet" href="//semantic-ui.com/dist/semantic.min.css" />
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/prism-themes/themes/prism-vs.css" />
+    <style>
+      html {
+        font-size: 17px;
+      }
+
+      p, pre[class*="language-"] {
+        margin: .8em 0 1.25em;
+      }
+    </style>
   </head>
 
   <body>
@@ -45,6 +55,8 @@
     <div class="ui basic segment container">
         
 <nav class="ui secondary stackable pointing menu" style="justify-content: center;">
+  <span class="item" style="background: #ff08">This documentation is for v0.2 (in development)</span>
+  <span class="item"></span>
   <a href="/docs/" class="active item">Overview</a>
   <a href="/docs/getting-started/" class="item">Getting Started</a>
   <a href="/docs/develop/" class="item">Develop</a>
@@ -78,7 +90,7 @@
 <tr>
 <td><a href="https://www.w3.org/TR/annotation-model/#css-selector">CSS</a></td>
 <td>CSS Selectors allow for a wide variety of well supported ways to describe the path to an element in a web page.</td>
-<td><a href="/docs/api/modules/dom.html#createcssselectormatcher">Partly</a></td>
+<td>Yes (<a href="/docs/api/modules/dom.html#createcssselectormatcher">for DOM</a>)</td>
 </tr>
 <tr>
 <td><a href="https://www.w3.org/TR/annotation-model/#xpath-selector">XPath</a></td>
@@ -88,12 +100,12 @@
 <tr>
 <td><a href="https://www.w3.org/TR/annotation-model/#text-quote-selector">Text Quote</a></td>
 <td>This Selector describes a range of text, including some of the text immediately before (a prefix) and after (a suffix) it to distinguish between multiple copies of the same sequence of characters.</td>
-<td>Yes, both <a href="/docs/api/modules/dom.html#describetextquote">for DOM</a> and <a href="/docs/api/modules/selector.html#textquoteselectormatcher">generic</a></td>
+<td>Yes (<a href="/docs/api/modules/dom.html#createtextquoteselectormatcher">for DOM</a> and <a href="/docs/api/modules/selector.html#textquoteselectormatcher">on any text</a>)</td>
 </tr>
 <tr>
 <td><a href="https://www.w3.org/TR/annotation-model/#text-position-selector">Text Position</a></td>
 <td>This Selector describes a range of text by recording the start and end positions of the selection in the stream.</td>
-<td>Yes, both <a href="/docs/api/modules/dom.html#describetextposition">for DOM</a> and <a href="/docs/api/modules/selector.html#textpositionselectormatcher">generic</a></td>
+<td>Yes (<a href="/docs/api/modules/dom.html#createtextpositionselectormatcher">for DOM</a> and <a href="/docs/api/modules/selector.html#textpositionselectormatcher">on any text</a>)</td>
 </tr>
 <tr>
 <td><a href="https://www.w3.org/TR/annotation-model/#data-position-selector">Data Position</a></td>
@@ -108,7 +120,7 @@
 <tr>
 <td><a href="https://www.w3.org/TR/annotation-model/#range-selector">Range</a></td>
 <td>A Range Selector can be used to identify the beginning and the end of the selection by using other Selectors.</td>
-<td>Yes, <a href="/docs/api/modules/dom.html#makecreaterangeselectormatcher">for DOM</a></td>
+<td>Yes (<a href="/docs/api/modules/dom.html#makecreaterangeselectormatcher">for DOM</a>)</td>
 </tr>
 <tr>
 <td><a href="https://www.w3.org/TR/annotation-model/#refinement-of-selection">Refinement</a></td>
@@ -119,11 +131,10 @@
 </table>
 <h3 id="web-annotation-json-validator">Web Annotation JSON validator</h3>
 <p>The source code also includes a script for validating Web Annotation Data Model JSON documents against the data model schema. Having <a href="/docs/develop/#install-from-source">installed from source</a>, one can run:</p>
-<pre><code class="language-sh">$ yarn validate --url https://raw.githubusercontent.com/w3c/web-annotation-tests/master/tools/samples/correct/anno1.json
-</code></pre>
+<pre class="language-shell"><code class="language-shell">$ <span class="token function">yarn</span> validate --url https://raw.githubusercontent.com/w3c/web-annotation-tests/master/tools/samples/correct/anno1.json</code></pre>
 <p>With the <code>--url</code> option you can pass in a URL or a local path to a JSON file.</p>
 <p>See some <a href="https://github.com/w3c/web-annotation-tests/tree/master/tools/samples">example JSON files</a> from the W3C. Note that this validator only tests the data model is followed, and not e.g. whether its target actually exists.</p>
-<h2 id="what-apache-annotator-it-not">What Apache Annotator it not</h2>
+<h2 id="what-apache-annotator-is-not">What Apache Annotator is not</h2>
 <p>Apache Annotator is <strong>not an all-in-one annotation tool</strong>; rather, it <em>helps others create</em> annotation tools. It does not have opinions regarding in which database on which computer annotations are stored, nor how they are made, exchanged or displayed. Those questions are considered application-specific and left to the developer. Our goal is that the developer can focus on exactly those questions, and forget about issues that are common among annotation tools: finding the part in the document that is being annotated, dealing with changes in the annotated document, ensuring compatibility with other tools, and so on.</p>
 
     </div>
@@ -139,7 +150,7 @@
       </style>
       <h1 class="ui small dividing header" style="margin: 0;">Contents</h1>
       <nav class="toc">
-        <ol><li><a href="#what-is-in-the-box">What is in the box</a><ol><li><a href="#selector-tools">Selector tools</a></li><li><a href="#web-annotation-json-validator">Web Annotation JSON validator</a></li></ol></li><li><a href="#what-apache-annotator-it-not">What Apache Annotator it not</a></li></ol></nav>
+        <ol><li><a href="#what-is-in-the-box">What is in the box</a><ol><li><a href="#selector-tools">Selector tools</a></li><li><a href="#web-annotation-json-validator">Web Annotation JSON validator</a></li></ol></li><li><a href="#what-apache-annotator-is-not">What Apache Annotator is not</a></li></ol></nav>
     </aside>
   </div>
 </main>

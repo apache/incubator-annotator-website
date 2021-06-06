@@ -28,6 +28,16 @@
 	<script async src="../assets/js/search.js" id="search-script"></script>
 	<script defer src="../assets/js/main.js"></script>
 	<link rel="stylesheet" href="//semantic-ui.com/dist/semantic.min.css" />
+	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/prism-themes/themes/prism-vs.css" />
+	<style>
+      html {
+        font-size: 17px;
+      }
+
+      p, pre[class*="language-"] {
+        margin: .8em 0 1.25em;
+      }
+    </style>
 </head>
 <body>
 <div class="ui borderless stackable top attached main menu">
@@ -46,6 +56,8 @@
 </div>
 <div class="ui basic segment container">
 	<nav class="ui secondary stackable pointing menu" style="justify-content: center;">
+		<span class="item" style="background: #ff08">This documentation is for v0.2 (in development)</span>
+		<span class="item"></span>
 		<a href="/docs/" class="item">Overview</a>
 		<a href="/docs/getting-started/" class="item">Getting Started</a>
 		<a href="/docs/develop/" class="item">Develop</a>
@@ -116,11 +128,10 @@
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>This module provides functions for handling annotations in the context of an
-							HTML DOM; in other words, a web page.</p>
+							HTML DOM; in other words, a web page.</p>
 						</div>
-						<p>The main functionality is finding which selection of the web page a <a href="https://www.w3.org/TR/2017/REC-annotation-model-20170223/#selectors" class="external">Selector</a> refers to; and, vice versa, describing a selection of the page as
-						a Selector.</p>
-						<p>The primary way to express selections in the web page is by <a href="https://developer.mozilla.org/en-US/docs/Web/API/Range" class="external">Range</a> objects.</p>
+						<p>The module’s main functionality is <em>matching</em> (or <em>‘anchoring’</em>) a <a href="https://www.w3.org/TR/2017/REC-annotation-model-20170223/#selectors" class="external">Selector</a> to the DOM, i.e. finding which piece of a web page it refers to;
+						and, vice versa, <em>describing</em> a selection of the page as a Selector.</p>
 					</div>
 				</section>
 				<section class="tsd-panel-group tsd-index-group">
@@ -133,6 +144,7 @@
 									<li class="tsd-kind-function tsd-parent-kind-module"><a href="dom.html#createcssselectormatcher" class="tsd-kind-icon">create<wbr>Css<wbr>Selector<wbr>Matcher</a></li>
 									<li class="tsd-kind-function tsd-parent-kind-module"><a href="dom.html#createtextpositionselectormatcher" class="tsd-kind-icon">create<wbr>Text<wbr>Position<wbr>Selector<wbr>Matcher</a></li>
 									<li class="tsd-kind-function tsd-parent-kind-module"><a href="dom.html#createtextquoteselectormatcher" class="tsd-kind-icon">create<wbr>Text<wbr>Quote<wbr>Selector<wbr>Matcher</a></li>
+									<li class="tsd-kind-function tsd-parent-kind-module"><a href="dom.html#describecss" class="tsd-kind-icon">describe<wbr>Css</a></li>
 									<li class="tsd-kind-function tsd-parent-kind-module"><a href="dom.html#describetextposition" class="tsd-kind-icon">describe<wbr>Text<wbr>Position</a></li>
 									<li class="tsd-kind-function tsd-parent-kind-module"><a href="dom.html#describetextquote" class="tsd-kind-icon">describe<wbr>Text<wbr>Quote</a></li>
 									<li class="tsd-kind-function tsd-parent-kind-module"><a href="dom.html#highlightrange" class="tsd-kind-icon">highlight<wbr>Range</a></li>
@@ -148,7 +160,7 @@
 						<a name="createcssselectormatcher" class="tsd-anchor"></a>
 						<h3>create<wbr>Css<wbr>Selector<wbr>Matcher</h3>
 						<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-							<li class="tsd-signature tsd-kind-icon">create<wbr>Css<wbr>Selector<wbr>Matcher<span class="tsd-signature-symbol">(</span>selector<span class="tsd-signature-symbol">: </span><a href="../interfaces/selector.cssselector.html" class="tsd-signature-type" data-tsd-kind="Interface">CssSelector</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/selector.matcher.html" class="tsd-signature-type" data-tsd-kind="Interface">Matcher</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Range</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Range</span><span class="tsd-signature-symbol">&gt;</span></li>
+							<li class="tsd-signature tsd-kind-icon">create<wbr>Css<wbr>Selector<wbr>Matcher<span class="tsd-signature-symbol">(</span>selector<span class="tsd-signature-symbol">: </span><a href="../interfaces/selector.cssselector.html" class="tsd-signature-type" data-tsd-kind="Interface">CssSelector</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/selector.matcher.html" class="tsd-signature-type" data-tsd-kind="Interface">Matcher</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Node</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Range</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Element</span><span class="tsd-signature-symbol">&gt;</span></li>
 						</ul>
 						<ul class="tsd-descriptions">
 							<li class="tsd-description">
@@ -163,24 +175,30 @@
 									<em>(XXX is this intentional, a mistake, or compromise?)</em></p>
 									<p>The function is curried, taking first the selector and then the scope.</p>
 									<p>As there may be multiple matches for a given selector, the matcher will
-										return an (async) generator that produces each match in the order they are
-									found in the text.</p>
-									<p>Each matching element is returned as a <a href="https://developer.mozilla.org/en-US/docs/Web/API/Range" class="external">Range</a> surrounding that element. This in order to make its output reusable
-									as the scope for any subsequents selectors that <a href="../interfaces/selector.selector-1.html#refinedby">refine</a> this CssSelector.</p>
+										return an (async) iterable that produces each match in the order they are
+									found in the document.</p>
+									<p>Note that the Web Annotation specification does not mention whether an
+										‘ambiguous’ CssSelector should indeed match all elements that match the
+										selector value, or perhaps only the first. This implementation returns all
+										matches to give users the freedom to follow either interpretation. This is
+									also in line with more clearly defined behaviour of the TextQuoteSelector:</p>
+									<blockquote>
+										<p>“If […] the user agent discovers multiple matching text sequences, then the
+										selection SHOULD be treated as matching all of the matches.”</p>
+									</blockquote>
 								</div>
 								<h4 class="tsd-parameters-title">Parameters</h4>
 								<ul class="tsd-parameters">
 									<li>
 										<h5>selector: <a href="../interfaces/selector.cssselector.html" class="tsd-signature-type" data-tsd-kind="Interface">CssSelector</a></h5>
 										<div class="tsd-comment tsd-typography">
-											<p>The <a href="../interfaces/selector.cssselector.html">CssSelector</a> to be
-											anchored</p>
+											<p>The <a href="../interfaces/selector.cssselector.html">CssSelector</a> to be anchored.</p>
 										</div>
 									</li>
 								</ul>
-								<h4 class="tsd-returns-title">Returns <a href="../interfaces/selector.matcher.html" class="tsd-signature-type" data-tsd-kind="Interface">Matcher</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Range</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Range</span><span class="tsd-signature-symbol">&gt;</span></h4>
-								<p>A <a href="../interfaces/selector.matcher.html">Matcher</a> function that applies
-								<code>selector</code> to a given <a href="https://developer.mozilla.org/en-US/docs/Web/API/Range" class="external">Range</a></p>
+								<h4 class="tsd-returns-title">Returns <a href="../interfaces/selector.matcher.html" class="tsd-signature-type" data-tsd-kind="Interface">Matcher</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Node</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Range</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Element</span><span class="tsd-signature-symbol">&gt;</span></h4>
+								<p>A <a href="../interfaces/selector.matcher.html">Matcher</a> function that applies <code>selector</code> to a given
+								<code>scope</code>.</p>
 							</li>
 						</ul>
 					</section>
@@ -188,7 +206,7 @@
 						<a name="createtextpositionselectormatcher" class="tsd-anchor"></a>
 						<h3>create<wbr>Text<wbr>Position<wbr>Selector<wbr>Matcher</h3>
 						<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-							<li class="tsd-signature tsd-kind-icon">create<wbr>Text<wbr>Position<wbr>Selector<wbr>Matcher<span class="tsd-signature-symbol">(</span>selector<span class="tsd-signature-symbol">: </span><a href="../interfaces/selector.textpositionselector.html" class="tsd-signature-type" data-tsd-kind="Interface">TextPositionSelector</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/selector.matcher.html" class="tsd-signature-type" data-tsd-kind="Interface">Matcher</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Range</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Range</span><span class="tsd-signature-symbol">&gt;</span></li>
+							<li class="tsd-signature tsd-kind-icon">create<wbr>Text<wbr>Position<wbr>Selector<wbr>Matcher<span class="tsd-signature-symbol">(</span>selector<span class="tsd-signature-symbol">: </span><a href="../interfaces/selector.textpositionselector.html" class="tsd-signature-type" data-tsd-kind="Interface">TextPositionSelector</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/selector.matcher.html" class="tsd-signature-type" data-tsd-kind="Interface">Matcher</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Node</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Range</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Range</span><span class="tsd-signature-symbol">&gt;</span></li>
 						</ul>
 						<ul class="tsd-descriptions">
 							<li class="tsd-description">
@@ -201,19 +219,14 @@
 									<p>The start and end positions are measured relative to the first text character
 									in the given scope.</p>
 									<p>The function is curried, taking first the selector and then the scope.</p>
-									<p>Its end result is an (async) generator producing a single <a href="https://developer.mozilla.org/en-US/docs/Web/API/Range" class="external">Range</a> to represent the match. (unlike a <a href="../interfaces/selector.textquoteselector.html">TextQuoteSelector</a>, a TextPositionSelector cannot have
-									multiple matches).</p>
+									<p>Its end result is an (async) generator producing a single <a href="https://developer.mozilla.org/en-US/docs/Web/API/Range" class="external">Range</a> to represent the match (unlike e.g. a <a href="../interfaces/selector.textquoteselector.html">TextQuoteSelector</a>, a
+									TextPositionSelector cannot have multiple matches).</p>
 									<dl class="tsd-comment-tags">
 										<dt>example</dt>
 										<dd><pre><code><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">selector</span><span style="color: #000000"> = { </span><span style="color: #001080">type:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;TextPositionSelector&#039;</span><span style="color: #000000">, </span><span style="color: #001080">start:</span><span style="color: #000000"> </span><span style="color: #098658">702</span><span style="color: #000000">, </span><span style="color: #001080">end:</span><span style="color: #000000"> </span><span style="color: #098658">736</span><span style="color: #000000"> };</span>
-
-<span style="color: #008000">// Search in the whole document.</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">scope</span><span style="color: #000000"> = </span><span style="color: #001080">document</span><span style="color: #000000">.</span><span style="color: #795E26">createRange</span><span style="color: #000000">();</span>
-<span style="color: #001080">scope</span><span style="color: #000000">.</span><span style="color: #795E26">selectNodeContents</span><span style="color: #000000">(</span><span style="color: #001080">document</span><span style="color: #000000">);</span>
-
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">scope</span><span style="color: #000000"> = </span><span style="color: #001080">document</span><span style="color: #000000">.</span><span style="color: #001080">body</span><span style="color: #000000">;</span>
 <span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">matches</span><span style="color: #000000"> = </span><span style="color: #795E26">textQuoteSelectorMatcher</span><span style="color: #000000">(</span><span style="color: #001080">selector</span><span style="color: #000000">)(</span><span style="color: #001080">scope</span><span style="color: #000000">);</span>
 <span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">match</span><span style="color: #000000"> = (</span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">matches</span><span style="color: #000000">.</span><span style="color: #795E26">next</span><span style="color: #000000">()).</span><span style="color: #001080">value</span><span style="color: #000000">;</span>
-
 <span style="color: #008000">// ⇒ Range { startContainer: #text, startOffset: 64, endContainer: #text,</span>
 <span style="color: #008000">//   endOffset: 98, … }</span>
 </code></pre>
@@ -225,14 +238,13 @@
 									<li>
 										<h5>selector: <a href="../interfaces/selector.textpositionselector.html" class="tsd-signature-type" data-tsd-kind="Interface">TextPositionSelector</a></h5>
 										<div class="tsd-comment tsd-typography">
-											<p>The <a href="../interfaces/selector.textpositionselector.html">TextPositionSelector</a>
-											to be anchored</p>
+											<p>The <a href="../interfaces/selector.textpositionselector.html">TextPositionSelector</a> to be anchored.</p>
 										</div>
 									</li>
 								</ul>
-								<h4 class="tsd-returns-title">Returns <a href="../interfaces/selector.matcher.html" class="tsd-signature-type" data-tsd-kind="Interface">Matcher</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Range</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Range</span><span class="tsd-signature-symbol">&gt;</span></h4>
-								<p>A <a href="../interfaces/selector.matcher.html">Matcher</a> function that applies
-								<code>selector</code> to a given <a href="https://developer.mozilla.org/en-US/docs/Web/API/Range" class="external">Range</a></p>
+								<h4 class="tsd-returns-title">Returns <a href="../interfaces/selector.matcher.html" class="tsd-signature-type" data-tsd-kind="Interface">Matcher</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Node</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Range</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Range</span><span class="tsd-signature-symbol">&gt;</span></h4>
+								<p>A <a href="../interfaces/selector.matcher.html">Matcher</a> function that applies <code>selector</code> within a given
+								<code>scope</code>.</p>
 							</li>
 						</ul>
 					</section>
@@ -240,7 +252,7 @@
 						<a name="createtextquoteselectormatcher" class="tsd-anchor"></a>
 						<h3>create<wbr>Text<wbr>Quote<wbr>Selector<wbr>Matcher</h3>
 						<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-							<li class="tsd-signature tsd-kind-icon">create<wbr>Text<wbr>Quote<wbr>Selector<wbr>Matcher<span class="tsd-signature-symbol">(</span>selector<span class="tsd-signature-symbol">: </span><a href="../interfaces/selector.textquoteselector.html" class="tsd-signature-type" data-tsd-kind="Interface">TextQuoteSelector</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/selector.matcher.html" class="tsd-signature-type" data-tsd-kind="Interface">Matcher</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Range</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Range</span><span class="tsd-signature-symbol">&gt;</span></li>
+							<li class="tsd-signature tsd-kind-icon">create<wbr>Text<wbr>Quote<wbr>Selector<wbr>Matcher<span class="tsd-signature-symbol">(</span>selector<span class="tsd-signature-symbol">: </span><a href="../interfaces/selector.textquoteselector.html" class="tsd-signature-type" data-tsd-kind="Interface">TextQuoteSelector</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/selector.matcher.html" class="tsd-signature-type" data-tsd-kind="Interface">Matcher</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Node</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Range</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Range</span><span class="tsd-signature-symbol">&gt;</span></li>
 						</ul>
 						<ul class="tsd-descriptions">
 							<li class="tsd-description">
@@ -263,10 +275,7 @@
 										<dt>example</dt>
 										<dd><pre><code><span style="color: #008000">// Find the word ‘banana’.</span>
 <span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">selector</span><span style="color: #000000"> = { </span><span style="color: #001080">type:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;TextQuoteSelector&#039;</span><span style="color: #000000">, </span><span style="color: #001080">exact:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;banana&#039;</span><span style="color: #000000"> };</span>
-
-<span style="color: #008000">// Search in the document body.</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">scope</span><span style="color: #000000"> = </span><span style="color: #001080">document</span><span style="color: #000000">.</span><span style="color: #795E26">createRange</span><span style="color: #000000">();</span>
-<span style="color: #001080">scope</span><span style="color: #000000">.</span><span style="color: #795E26">selectNodeContents</span><span style="color: #000000">(</span><span style="color: #001080">document</span><span style="color: #000000">.</span><span style="color: #001080">body</span><span style="color: #000000">);</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">scope</span><span style="color: #000000"> = </span><span style="color: #001080">document</span><span style="color: #000000">.</span><span style="color: #001080">body</span><span style="color: #000000">;</span>
 
 <span style="color: #008000">// Read all matches.</span>
 <span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">matches</span><span style="color: #000000"> = </span><span style="color: #795E26">textQuoteSelectorMatcher</span><span style="color: #000000">(</span><span style="color: #001080">selector</span><span style="color: #000000">)(</span><span style="color: #001080">scope</span><span style="color: #000000">);</span>
@@ -284,22 +293,21 @@
 									<li>
 										<h5>selector: <a href="../interfaces/selector.textquoteselector.html" class="tsd-signature-type" data-tsd-kind="Interface">TextQuoteSelector</a></h5>
 										<div class="tsd-comment tsd-typography">
-											<p>The <a href="../interfaces/selector.textquoteselector.html">TextQuoteSelector</a>
-											to be anchored</p>
+											<p>The <a href="../interfaces/selector.textquoteselector.html">TextQuoteSelector</a> to be anchored.</p>
 										</div>
 									</li>
 								</ul>
-								<h4 class="tsd-returns-title">Returns <a href="../interfaces/selector.matcher.html" class="tsd-signature-type" data-tsd-kind="Interface">Matcher</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Range</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Range</span><span class="tsd-signature-symbol">&gt;</span></h4>
-								<p>a <a href="../interfaces/selector.matcher.html">Matcher</a> function that applies
-								<code>selector</code> to a given <a href="https://developer.mozilla.org/en-US/docs/Web/API/Range" class="external">Range</a></p>
+								<h4 class="tsd-returns-title">Returns <a href="../interfaces/selector.matcher.html" class="tsd-signature-type" data-tsd-kind="Interface">Matcher</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Node</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Range</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Range</span><span class="tsd-signature-symbol">&gt;</span></h4>
+								<p>A <a href="../interfaces/selector.matcher.html">Matcher</a> function that applies <code>selector</code> within a given
+								<code>scope</code>.</p>
 							</li>
 						</ul>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
-						<a name="describetextposition" class="tsd-anchor"></a>
-						<h3>describe<wbr>Text<wbr>Position</h3>
+						<a name="describecss" class="tsd-anchor"></a>
+						<h3>describe<wbr>Css</h3>
 						<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-							<li class="tsd-signature tsd-kind-icon">describe<wbr>Text<wbr>Position<span class="tsd-signature-symbol">(</span>range<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Range</span>, maybeScope<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Range</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/selector.textpositionselector.html" class="tsd-signature-type" data-tsd-kind="Interface">TextPositionSelector</a><span class="tsd-signature-symbol">&gt;</span></li>
+							<li class="tsd-signature tsd-kind-icon">describe<wbr>Css<span class="tsd-signature-symbol">(</span>element<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HTMLElement</span>, scope<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Node</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/selector.cssselector.html" class="tsd-signature-type" data-tsd-kind="Interface">CssSelector</a><span class="tsd-signature-symbol">&gt;</span></li>
 						</ul>
 						<ul class="tsd-descriptions">
 							<li class="tsd-description">
@@ -307,8 +315,57 @@
 								</aside>
 								<div class="tsd-comment tsd-typography">
 									<div class="lead">
-										<p>Returns a <a href="../interfaces/selector.textpositionselector.html">TextPositionSelector</a> that points
-										at the target text within the given scope.</p>
+										<p>Returns a <a href="../interfaces/selector.cssselector.html">CssSelector</a> that unambiguously describes the given
+										element, within the given scope.</p>
+									</div>
+									<dl class="tsd-comment-tags">
+										<dt>example</dt>
+										<dd><pre><code><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">target</span><span style="color: #000000"> = </span><span style="color: #001080">document</span><span style="color: #000000">.</span><span style="color: #795E26">getElementById</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;targetelement&#039;</span><span style="color: #000000">).</span><span style="color: #001080">firstElementChild</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">selector</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #795E26">describeCss</span><span style="color: #000000">(</span><span style="color: #001080">target</span><span style="color: #000000">);</span>
+<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">selector</span><span style="color: #000000">);</span>
+<span style="color: #008000">// {</span>
+<span style="color: #008000">//   type: &#039;CssSelector&#039;,</span>
+<span style="color: #008000">//   value: &#039;#targetelement &gt; :nth-child(1)&#039;</span>
+<span style="color: #008000">// }</span>
+</code></pre>
+										</dd>
+									</dl>
+								</div>
+								<h4 class="tsd-parameters-title">Parameters</h4>
+								<ul class="tsd-parameters">
+									<li>
+										<h5>element: <span class="tsd-signature-type">HTMLElement</span></h5>
+										<div class="tsd-comment tsd-typography">
+											<p>The element that the selector should describe.</p>
+										</div>
+									</li>
+									<li>
+										<h5><span class="tsd-flag ts-flagOptional">Optional</span> scope: <span class="tsd-signature-type">Node</span></h5>
+										<div class="tsd-comment tsd-typography">
+											<p>The node that serves as the ‘document’ for purposes of finding
+											a unique selector. Defaults to the full Document that contains <code>element</code>.</p>
+										</div>
+									</li>
+								</ul>
+								<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/selector.cssselector.html" class="tsd-signature-type" data-tsd-kind="Interface">CssSelector</a><span class="tsd-signature-symbol">&gt;</span></h4>
+								<p>The selector unambiguously describing <code>element</code> within <code>scope</code>.</p>
+							</li>
+						</ul>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+						<a name="describetextposition" class="tsd-anchor"></a>
+						<h3>describe<wbr>Text<wbr>Position</h3>
+						<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+							<li class="tsd-signature tsd-kind-icon">describe<wbr>Text<wbr>Position<span class="tsd-signature-symbol">(</span>range<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Range</span>, scope<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Node</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Range</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/selector.textpositionselector.html" class="tsd-signature-type" data-tsd-kind="Interface">TextPositionSelector</a><span class="tsd-signature-symbol">&gt;</span></li>
+						</ul>
+						<ul class="tsd-descriptions">
+							<li class="tsd-description">
+								<aside class="tsd-sources">
+								</aside>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>Returns a <a href="../interfaces/selector.textpositionselector.html">TextPositionSelector</a> that points at the target text within
+										the given scope.</p>
 									</div>
 									<p>When no scope is given, the position is described relative to the document
 										as a whole. Note this means all the characters in all Text nodes are counted
@@ -334,20 +391,20 @@
 									<li>
 										<h5>range: <span class="tsd-signature-type">Range</span></h5>
 										<div class="tsd-comment tsd-typography">
-											<p>The range of characters that the selector should describe</p>
+											<p>The <a href="https://developer.mozilla.org/en-US/docs/Web/API/Range" class="external">Range</a> whose text content will be described.</p>
 										</div>
 									</li>
 									<li>
-										<h5><span class="tsd-flag ts-flagOptional">Optional</span> maybeScope: <span class="tsd-signature-type">Range</span></h5>
+										<h5><span class="tsd-flag ts-flagOptional">Optional</span> scope: <span class="tsd-signature-type">Node</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Range</span></h5>
 										<div class="tsd-comment tsd-typography">
-											<p>A <a href="https://developer.mozilla.org/en-US/docs/Web/API/Range" class="external">Range</a> that serves as the ‘document’ for purposes of finding occurrences
-												and determining prefix and suffix. Defaults to span the full Document
-											containing the range.</p>
+											<p>A Node or Range that serves as the ‘document’ for purposes of
+												finding occurrences and determining prefix and suffix. Defaults to the full
+											Document that contains <code>range</code>.</p>
 										</div>
 									</li>
 								</ul>
 								<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/selector.textpositionselector.html" class="tsd-signature-type" data-tsd-kind="Interface">TextPositionSelector</a><span class="tsd-signature-symbol">&gt;</span></h4>
-								<p>The selector describing the <code>range</code> relative to <code>scope</code></p>
+								<p>The selector describing <code>range</code> within <code>scope</code>.</p>
 							</li>
 						</ul>
 					</section>
@@ -355,7 +412,7 @@
 						<a name="describetextquote" class="tsd-anchor"></a>
 						<h3>describe<wbr>Text<wbr>Quote</h3>
 						<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-							<li class="tsd-signature tsd-kind-icon">describe<wbr>Text<wbr>Quote<span class="tsd-signature-symbol">(</span>range<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Range</span>, maybeScope<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Range</span>, options<span class="tsd-signature-symbol">?: </span><a href="../interfaces/selector.describetextquoteoptions.html" class="tsd-signature-type" data-tsd-kind="Interface">DescribeTextQuoteOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/selector.textquoteselector.html" class="tsd-signature-type" data-tsd-kind="Interface">TextQuoteSelector</a><span class="tsd-signature-symbol">&gt;</span></li>
+							<li class="tsd-signature tsd-kind-icon">describe<wbr>Text<wbr>Quote<span class="tsd-signature-symbol">(</span>range<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Range</span>, scope<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Node</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Range</span>, options<span class="tsd-signature-symbol">?: </span><a href="../interfaces/selector.describetextquoteoptions.html" class="tsd-signature-type" data-tsd-kind="Interface">DescribeTextQuoteOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/selector.textquoteselector.html" class="tsd-signature-type" data-tsd-kind="Interface">TextQuoteSelector</a><span class="tsd-signature-symbol">&gt;</span></li>
 						</ul>
 						<ul class="tsd-descriptions">
 							<li class="tsd-description">
@@ -363,8 +420,8 @@
 								</aside>
 								<div class="tsd-comment tsd-typography">
 									<div class="lead">
-										<p>Create a <a href="../interfaces/selector.textquoteselector.html">TextQuoteSelector</a> that
-										unambiguously describes the given range.</p>
+										<p>Returns a <a href="../interfaces/selector.textquoteselector.html">TextQuoteSelector</a> that unambiguously describes the given
+										range of text, within the given scope.</p>
 									</div>
 									<p>The selector will contain the <em>exact</em> target quote, and in case this quote
 										appears multiple times in the text, sufficient context around the quote will
@@ -396,11 +453,11 @@
 										</div>
 									</li>
 									<li>
-										<h5><span class="tsd-flag ts-flagOptional">Optional</span> maybeScope: <span class="tsd-signature-type">Range</span></h5>
+										<h5><span class="tsd-flag ts-flagOptional">Optional</span> scope: <span class="tsd-signature-type">Node</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Range</span></h5>
 										<div class="tsd-comment tsd-typography">
-											<p>A <a href="https://developer.mozilla.org/en-US/docs/Web/API/Range" class="external">Range</a> that serves as the ‘document’ for purposes of finding occurrences
-												and determining prefix and suffix. Defaults to span the full Document
-											containing the range.</p>
+											<p>A Node or Range that serves as the ‘document’ for purposes of
+												finding occurrences and determining prefix and suffix. Defaults to the full
+											Document that contains <code>range</code>.</p>
 										</div>
 									</li>
 									<li>
@@ -411,7 +468,7 @@
 									</li>
 								</ul>
 								<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/selector.textquoteselector.html" class="tsd-signature-type" data-tsd-kind="Interface">TextQuoteSelector</a><span class="tsd-signature-symbol">&gt;</span></h4>
-								<p>The selector unambiguously describing the <code>range</code> in <code>scope</code>.</p>
+								<p>The selector unambiguously describing <code>range</code> within <code>scope</code>.</p>
 							</li>
 						</ul>
 					</section>
@@ -481,7 +538,7 @@
 						<a name="makecreaterangeselectormatcher" class="tsd-anchor"></a>
 						<h3>make<wbr>Create<wbr>Range<wbr>Selector<wbr>Matcher</h3>
 						<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-							<li class="tsd-signature tsd-kind-icon">make<wbr>Create<wbr>Range<wbr>Selector<wbr>Matcher<span class="tsd-signature-symbol">(</span>createMatcher<span class="tsd-signature-symbol">: </span>&lt;T&gt;<span class="tsd-signature-symbol">(</span>selector<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><a href="../interfaces/selector.matcher.html" class="tsd-signature-type" data-tsd-kind="Interface">Matcher</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Range</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Range</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>selector<span class="tsd-signature-symbol">: </span><a href="../interfaces/selector.rangeselector.html" class="tsd-signature-type" data-tsd-kind="Interface">RangeSelector</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><a href="../interfaces/selector.matcher.html" class="tsd-signature-type" data-tsd-kind="Interface">Matcher</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Range</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Range</span><span class="tsd-signature-symbol">&gt;</span></li>
+							<li class="tsd-signature tsd-kind-icon">make<wbr>Create<wbr>Range<wbr>Selector<wbr>Matcher<span class="tsd-signature-symbol">(</span>createMatcher<span class="tsd-signature-symbol">: </span>&lt;T, TMatch&gt;<span class="tsd-signature-symbol">(</span>selector<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><a href="../interfaces/selector.matcher.html" class="tsd-signature-type" data-tsd-kind="Interface">Matcher</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Node</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Range</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TMatch</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>selector<span class="tsd-signature-symbol">: </span><a href="../interfaces/selector.rangeselector.html" class="tsd-signature-type" data-tsd-kind="Interface">RangeSelector</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><a href="../interfaces/selector.matcher.html" class="tsd-signature-type" data-tsd-kind="Interface">Matcher</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Node</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Range</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Range</span><span class="tsd-signature-symbol">&gt;</span></li>
 						</ul>
 						<ul class="tsd-descriptions">
 							<li class="tsd-description">
@@ -495,13 +552,12 @@
 									<code>createMatcher</code> function that will be used to process those nested selectors.</p>
 									<p>The function is curried, taking first the <code>createMatcher</code> function, then the
 									selector, and then the scope.</p>
-									<p>As there may be multiple matches for a given selector, the matcher will
-										return an (async) generator that produces each match in the order they are
-										found in the text. If both its nested selectors produce multiple matches, the
-										RangeSelector matches each possible pair among those in which the order of
-										start and end are respected. <em>(Note this behaviour is a rather free
-											interpretation — the Web Annotation Data Model spec is silent about multiple
-									matches for RangeSelectors)</em></p>
+									<p>As there may be multiple matches for the start &amp; end selectors, the resulting
+										matcher will return an (async) iterable, that produces a match for each
+										possible pair of matches of the nested selectors (except those where its end
+										would precede its start). <em>(Note that this behaviour is a rather free
+											interpretation of the Web Annotation Data Model spec, which is silent about
+									the possibility of multiple matches for RangeSelectors)</em></p>
 									<dl class="tsd-comment-tags">
 										<dt>example</dt>
 										<dd><p>By using a matcher for <a href="../interfaces/selector.textquoteselector.html">TextQuoteSelector</a>s, one
@@ -515,13 +571,15 @@
 <span style="color: #000000">  },</span>
 <span style="color: #000000">  </span><span style="color: #001080">endSelector:</span><span style="color: #000000"> {</span>
 <span style="color: #000000">    </span><span style="color: #001080">type:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;TextQuoteSelector&#039;</span><span style="color: #000000">,</span>
-<span style="color: #000000">    </span><span style="color: #008000">// Because the end of a RangeSelector is *exclusive*, we’ll present the</span>
-<span style="color: #000000">    </span><span style="color: #008000">// latter part of the quote as the *prefix* so it will part of the match.</span>
+<span style="color: #000000">    </span><span style="color: #008000">// Because the end of a RangeSelector is *exclusive*, we will present the</span>
+<span style="color: #000000">    </span><span style="color: #008000">// latter part of the quote as the *prefix* so it will be part of the</span>
+<span style="color: #000000">    </span><span style="color: #008000">// match.</span>
 <span style="color: #000000">    </span><span style="color: #001080">exact:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;&#039;</span><span style="color: #000000">,</span>
 <span style="color: #000000">    </span><span style="color: #001080">prefix:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039; amet,&#039;</span><span style="color: #000000">,</span>
 <span style="color: #000000">  }</span>
-<span style="color: #000000">}}</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">createRangeSelectorMatcher</span><span style="color: #000000"> = </span><span style="color: #795E26">makeCreateRangeSelectorMatcher</span><span style="color: #000000">(</span><span style="color: #001080">createTextQuoteMatcher</span><span style="color: #000000">);</span>
+<span style="color: #000000">};</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">createRangeSelectorMatcher</span><span style="color: #000000"> =</span>
+<span style="color: #000000">  </span><span style="color: #795E26">makeCreateRangeSelectorMatcher</span><span style="color: #000000">(</span><span style="color: #001080">createTextQuoteMatcher</span><span style="color: #000000">);</span>
 <span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">match</span><span style="color: #000000"> = </span><span style="color: #795E26">createRangeSelectorMatcher</span><span style="color: #000000">(</span><span style="color: #001080">selector</span><span style="color: #000000">)(</span><span style="color: #001080">document</span><span style="color: #000000">.</span><span style="color: #001080">body</span><span style="color: #000000">);</span>
 <span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">match</span><span style="color: #000000">)</span>
 <span style="color: #008000">// ⇒ Range { startContainer: #text, startOffset: 6, endContainer: #text,</span>
@@ -547,14 +605,14 @@
 								<h4 class="tsd-parameters-title">Parameters</h4>
 								<ul class="tsd-parameters">
 									<li>
-										<h5>createMatcher: &lt;T&gt;<span class="tsd-signature-symbol">(</span>selector<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><a href="../interfaces/selector.matcher.html" class="tsd-signature-type" data-tsd-kind="Interface">Matcher</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Range</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Range</span><span class="tsd-signature-symbol">&gt;</span></h5>
+										<h5>createMatcher: &lt;T, TMatch&gt;<span class="tsd-signature-symbol">(</span>selector<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><a href="../interfaces/selector.matcher.html" class="tsd-signature-type" data-tsd-kind="Interface">Matcher</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Node</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Range</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TMatch</span><span class="tsd-signature-symbol">&gt;</span></h5>
 										<div class="tsd-comment tsd-typography">
 											<p>The function used to process nested selectors.</p>
 										</div>
 										<ul class="tsd-parameters">
 											<li class="tsd-parameter-signature">
 												<ul class="tsd-signatures tsd-kind-type-literal tsd-has-type-parameter">
-													<li class="tsd-signature tsd-kind-icon">&lt;T&gt;<span class="tsd-signature-symbol">(</span>selector<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/selector.matcher.html" class="tsd-signature-type" data-tsd-kind="Interface">Matcher</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Range</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Range</span><span class="tsd-signature-symbol">&gt;</span></li>
+													<li class="tsd-signature tsd-kind-icon">&lt;T, TMatch&gt;<span class="tsd-signature-symbol">(</span>selector<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/selector.matcher.html" class="tsd-signature-type" data-tsd-kind="Interface">Matcher</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Node</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Range</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TMatch</span><span class="tsd-signature-symbol">&gt;</span></li>
 												</ul>
 												<ul class="tsd-descriptions">
 													<li class="tsd-description">
@@ -563,6 +621,9 @@
 															<li>
 																<h4>T<span class="tsd-signature-symbol">: </span><a href="../interfaces/selector.selector-1.html" class="tsd-signature-type" data-tsd-kind="Interface">Selector</a></h4>
 															</li>
+															<li>
+																<h4>TMatch<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Node</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Range</span></h4>
+															</li>
 														</ul>
 														<h4 class="tsd-parameters-title">Parameters</h4>
 														<ul class="tsd-parameters">
@@ -570,19 +631,19 @@
 																<h5>selector: <span class="tsd-signature-type">T</span></h5>
 															</li>
 														</ul>
-														<h4 class="tsd-returns-title">Returns <a href="../interfaces/selector.matcher.html" class="tsd-signature-type" data-tsd-kind="Interface">Matcher</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Range</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Range</span><span class="tsd-signature-symbol">&gt;</span></h4>
+														<h4 class="tsd-returns-title">Returns <a href="../interfaces/selector.matcher.html" class="tsd-signature-type" data-tsd-kind="Interface">Matcher</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Node</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Range</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TMatch</span><span class="tsd-signature-symbol">&gt;</span></h4>
 													</li>
 												</ul>
 											</li>
 										</ul>
 									</li>
 								</ul>
-								<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">(</span>selector<span class="tsd-signature-symbol">: </span><a href="../interfaces/selector.rangeselector.html" class="tsd-signature-type" data-tsd-kind="Interface">RangeSelector</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><a href="../interfaces/selector.matcher.html" class="tsd-signature-type" data-tsd-kind="Interface">Matcher</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Range</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Range</span><span class="tsd-signature-symbol">&gt;</span></h4>
-								<p>A function that, given a RangeSelector, creates a <a href="../interfaces/selector.matcher.html">Matcher</a> function that applies it to a given <a href="https://developer.mozilla.org/en-US/docs/Web/API/Range" class="external">Range</a></p>
+								<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">(</span>selector<span class="tsd-signature-symbol">: </span><a href="../interfaces/selector.rangeselector.html" class="tsd-signature-type" data-tsd-kind="Interface">RangeSelector</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><a href="../interfaces/selector.matcher.html" class="tsd-signature-type" data-tsd-kind="Interface">Matcher</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Node</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Range</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Range</span><span class="tsd-signature-symbol">&gt;</span></h4>
+								<p>A function that, given a RangeSelector <code>selector</code>, creates a <a href="../interfaces/selector.matcher.html">Matcher</a> function that can apply it to a given <code>scope</code>.</p>
 								<ul class="tsd-parameters">
 									<li class="tsd-parameter-signature">
 										<ul class="tsd-signatures tsd-kind-type-literal">
-											<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>selector<span class="tsd-signature-symbol">: </span><a href="../interfaces/selector.rangeselector.html" class="tsd-signature-type" data-tsd-kind="Interface">RangeSelector</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/selector.matcher.html" class="tsd-signature-type" data-tsd-kind="Interface">Matcher</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Range</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Range</span><span class="tsd-signature-symbol">&gt;</span></li>
+											<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>selector<span class="tsd-signature-symbol">: </span><a href="../interfaces/selector.rangeselector.html" class="tsd-signature-type" data-tsd-kind="Interface">RangeSelector</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/selector.matcher.html" class="tsd-signature-type" data-tsd-kind="Interface">Matcher</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Node</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Range</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Range</span><span class="tsd-signature-symbol">&gt;</span></li>
 										</ul>
 										<ul class="tsd-descriptions">
 											<li class="tsd-description">
@@ -592,7 +653,7 @@
 														<h5>selector: <a href="../interfaces/selector.rangeselector.html" class="tsd-signature-type" data-tsd-kind="Interface">RangeSelector</a></h5>
 													</li>
 												</ul>
-												<h4 class="tsd-returns-title">Returns <a href="../interfaces/selector.matcher.html" class="tsd-signature-type" data-tsd-kind="Interface">Matcher</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Range</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Range</span><span class="tsd-signature-symbol">&gt;</span></h4>
+												<h4 class="tsd-returns-title">Returns <a href="../interfaces/selector.matcher.html" class="tsd-signature-type" data-tsd-kind="Interface">Matcher</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Node</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Range</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Range</span><span class="tsd-signature-symbol">&gt;</span></h4>
 											</li>
 										</ul>
 									</li>
@@ -626,6 +687,9 @@
 						</li>
 						<li class=" tsd-kind-function tsd-parent-kind-module">
 							<a href="dom.html#createtextquoteselectormatcher" class="tsd-kind-icon">create<wbr>Text<wbr>Quote<wbr>Selector<wbr>Matcher</a>
+						</li>
+						<li class=" tsd-kind-function tsd-parent-kind-module">
+							<a href="dom.html#describecss" class="tsd-kind-icon">describe<wbr>Css</a>
 						</li>
 						<li class=" tsd-kind-function tsd-parent-kind-module">
 							<a href="dom.html#describetextposition" class="tsd-kind-icon">describe<wbr>Text<wbr>Position</a>

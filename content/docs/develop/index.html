@@ -24,6 +24,16 @@
 
 
     <link rel="stylesheet" href="//semantic-ui.com/dist/semantic.min.css" />
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/prism-themes/themes/prism-vs.css" />
+    <style>
+      html {
+        font-size: 17px;
+      }
+
+      p, pre[class*="language-"] {
+        margin: .8em 0 1.25em;
+      }
+    </style>
   </head>
 
   <body>
@@ -45,6 +55,8 @@
     <div class="ui basic segment container">
         
 <nav class="ui secondary stackable pointing menu" style="justify-content: center;">
+  <span class="item" style="background: #ff08">This documentation is for v0.2 (in development)</span>
+  <span class="item"></span>
   <a href="/docs/" class="item">Overview</a>
   <a href="/docs/getting-started/" class="item">Getting Started</a>
   <a href="/docs/develop/" class="active item">Develop</a>
@@ -61,7 +73,7 @@
 <p>If you’d like to code on the project, you will need the following:</p>
 <ul>
 <li><a href="https://git-scm.com/">git</a></li>
-<li><a href="https://nodejs.org">node</a> version ^12.20 || ^14.15 || ^15.4</li>
+<li><a href="https://nodejs.org">node</a> version ^12.20 || ^14.15 || ^15.4 || ^16.0</li>
 <li><a href="https://www.yarnpkg.com/">yarn</a> version ^1.5</li>
 </ul>
 <h3 id="install">Install</h3>
@@ -69,13 +81,10 @@
 <pre><code>$ git clone https://gitbox.apache.org/repos/asf/incubator-annotator.git apache-annotator
 </code></pre>
 <p>Then install dependencies using yarn:</p>
-<pre><code class="language-sh">$ cd apache-annotator
-$ yarn install
-</code></pre>
+<pre class="language-shell"><code class="language-shell">$ <span class="token builtin class-name">cd</span> apache-annotator<br>$ <span class="token function">yarn</span> <span class="token function">install</span></code></pre>
 <h2 id="build">Build</h2>
 <p>To compile (‘transpile’) the code:</p>
-<pre><code class="language-sh">$ yarn build
-</code></pre>
+<pre class="language-shell"><code class="language-shell">$ <span class="token function">yarn</span> build</code></pre>
 <p>For each module, the TypeScript source code is in <code>packages/…/src</code> and the Javascript is output in <code>packages/…/lib</code>.</p>
 <p>To use your local build of the code in an application that depends on annotator, have a look at the <a href="https://yarnpkg.com/cli/link"><code>yarn link</code></a> or <a href="https://docs.npmjs.com/cli/v7/commands/npm-link"><code>npm link</code></a> command.</p>
 <h2 id="play">Play</h2>
@@ -85,8 +94,7 @@ $ yarn install
 <p>Now open <code>http://localhost:8080/</code> (or whichever address the command prints) in your web browser to play with the demo. The server continuously rebuilds and hot-reloads to the source code after any edits, so you can directly try out any changes you make to the features it demonstrates.</p>
 <h2 id="run-tests">Run tests</h2>
 <p>This runs the tests for all packages and reports their code coverage:</p>
-<pre><code class="language-sh">$ yarn test
-</code></pre>
+<pre class="language-shell"><code class="language-shell">$ <span class="token function">yarn</span> <span class="token builtin class-name">test</span></code></pre>
 
     </div>
     <aside class="ui four wide column">
