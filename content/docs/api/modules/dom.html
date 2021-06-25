@@ -147,7 +147,7 @@
 									<li class="tsd-kind-function tsd-parent-kind-module"><a href="dom.html#describecss" class="tsd-kind-icon">describe<wbr>Css</a></li>
 									<li class="tsd-kind-function tsd-parent-kind-module"><a href="dom.html#describetextposition" class="tsd-kind-icon">describe<wbr>Text<wbr>Position</a></li>
 									<li class="tsd-kind-function tsd-parent-kind-module"><a href="dom.html#describetextquote" class="tsd-kind-icon">describe<wbr>Text<wbr>Quote</a></li>
-									<li class="tsd-kind-function tsd-parent-kind-module"><a href="dom.html#highlightrange" class="tsd-kind-icon">highlight<wbr>Range</a></li>
+									<li class="tsd-kind-function tsd-parent-kind-module"><a href="dom.html#highlighttext" class="tsd-kind-icon">highlight<wbr>Text</a></li>
 									<li class="tsd-kind-function tsd-parent-kind-module"><a href="dom.html#makecreaterangeselectormatcher" class="tsd-kind-icon">make<wbr>Create<wbr>Range<wbr>Selector<wbr>Matcher</a></li>
 								</ul>
 							</section>
@@ -473,10 +473,10 @@
 						</ul>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
-						<a name="highlightrange" class="tsd-anchor"></a>
-						<h3>highlight<wbr>Range</h3>
+						<a name="highlighttext" class="tsd-anchor"></a>
+						<h3>highlight<wbr>Text</h3>
 						<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-							<li class="tsd-signature tsd-kind-icon">highlight<wbr>Range<span class="tsd-signature-symbol">(</span>range<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Range</span>, tagName<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, attributes<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></li>
+							<li class="tsd-signature tsd-kind-icon">highlight<wbr>Text<span class="tsd-signature-symbol">(</span>target<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Node</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Range</span>, tagName<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, attributes<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></li>
 						</ul>
 						<ul class="tsd-descriptions">
 							<li class="tsd-description">
@@ -484,10 +484,11 @@
 								</aside>
 								<div class="tsd-comment tsd-typography">
 									<div class="lead">
-										<p>Wrap each text node in a given DOM Range with a <code>&lt;mark&gt;</code> or other element.</p>
+										<p>Wrap each text node in a given Node or Range with a <code>&lt;mark&gt;</code> or other
+										element.</p>
 									</div>
-									<p>If the Range start and/or ends within a Text node, that node will be split
-									in order to only wrap the contained part in the mark element.</p>
+									<p>If a Range is given that starts and/or ends within a Text node, that node
+									will be split in order to only wrap the contained part in the mark element.</p>
 									<p>The highlight can be removed again by calling the function that cleans up the
 										wrapper elements. Note that this might not perfectly restore the DOM to its
 										previous state: text nodes that were split are not merged again. One could
@@ -497,23 +498,23 @@
 								<h4 class="tsd-parameters-title">Parameters</h4>
 								<ul class="tsd-parameters">
 									<li>
-										<h5>range: <span class="tsd-signature-type">Range</span></h5>
+										<h5>target: <span class="tsd-signature-type">Node</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Range</span></h5>
 										<div class="tsd-comment tsd-typography">
-											<p>A DOM Range object. Note that as highlighting modifies the
-											DOM, the range may be unusable afterwards.</p>
+											<p>The Node/Range containing the text. If it is a Range, note
+											that as highlighting modifies the DOM, the Range may be unusable afterwards.</p>
 										</div>
 									</li>
 									<li>
 										<h5><span class="tsd-flag ts-flagOptional">Optional</span> tagName: <span class="tsd-signature-type">string</span></h5>
 										<div class="tsd-comment tsd-typography">
-											<p>The element used to wrap text nodes. Defaults to &#39;mark&#39;.</p>
+											<p>The element used to wrap text nodes. Defaults to <code>&#39;mark&#39;</code>.</p>
 										</div>
 									</li>
 									<li>
 										<h5><span class="tsd-flag ts-flagOptional">Optional</span> attributes: <span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h5>
 										<div class="tsd-comment tsd-typography">
 											<p>An object defining any attributes to be set on the
-											wrapper elements</p>
+											wrapper elements, e.g. its <code>class</code>.</p>
 										</div>
 									</li>
 								</ul>
@@ -698,7 +699,7 @@
 							<a href="dom.html#describetextquote" class="tsd-kind-icon">describe<wbr>Text<wbr>Quote</a>
 						</li>
 						<li class=" tsd-kind-function tsd-parent-kind-module">
-							<a href="dom.html#highlightrange" class="tsd-kind-icon">highlight<wbr>Range</a>
+							<a href="dom.html#highlighttext" class="tsd-kind-icon">highlight<wbr>Text</a>
 						</li>
 						<li class=" tsd-kind-function tsd-parent-kind-module">
 							<a href="dom.html#makecreaterangeselectormatcher" class="tsd-kind-icon">make<wbr>Create<wbr>Range<wbr>Selector<wbr>Matcher</a>
