@@ -25,7 +25,7 @@ $ yarn add @apache-annotator/dom@dev
 And in your code import what you need:
 
 ``` js
-import { highlightRange } from '@apache-annotator/dom';
+import { highlightText } from '@apache-annotator/dom';
 ```
 
 
@@ -66,12 +66,12 @@ The *prefix* and *suffix* attributes are there to know which of multiple occurre
 Next, we define roughly the inverse function: given a TextQuoteSelector, we highlight the text it points to.
 
 ``` js
-import { createTextQuoteSelectorMatcher, highlightRange } from '@apache-annotator/dom';
+import { createTextQuoteSelectorMatcher, highlightText } from '@apache-annotator/dom';
 
 async function highlightSelectorTarget(textQuoteSelector) {
   const matches = createTextQuoteSelectorMatcher(textQuoteSelector)(document.body);
   for await (const match of matches) {
-    highlightRange(match);
+    highlightText(match);
   }
 }
 ```
