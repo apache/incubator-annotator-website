@@ -20,7 +20,7 @@ If you’d like to code on the project, you will need the following:
 
 To retrieve the code using git:
 
-```
+``` shell
 $ git clone https://gitbox.apache.org/repos/asf/incubator-annotator.git apache-annotator
 ```
 
@@ -47,7 +47,7 @@ To use your local build of the code in an application that depends on annotator,
 
 To run a webserver running [the demo](https://annotator.apache.org/demo/):
 
-```
+``` shell
 $ yarn start
 ```
 
