@@ -3,8 +3,16 @@
   Therefore: only use plain Handlebars code, no custom helpers etc.
 --}}
 <nav class="ui secondary stackable pointing menu" style="justify-content: center;">
-  <span class="item" style="background: #ff08">This documentation is for v0.2 (in development)</span>
-  <span class="item"></span>
+  <div class="ui simple dropdown item">
+    Latest release (v0.2)
+    <i class="dropdown icon"></i>
+    <div class="menu" style="margin-top: -1px;">
+      <a class="item" href=".">
+        v0.2
+      </a>
+    </div>
+  </div>
+  <div class="item" style="flex-grow: 1;"></div>
   <a href="/docs/" class="{{#if isDocsIndex}}active {{/if}}item">Overview</a>
   <a href="/docs/getting-started/" class="{{#if isGettingStarted}}active {{/if}}item">Getting Started</a>
   <a href="/docs/develop/" class="{{#if isDevelop}}active {{/if}}item">Develop</a>
