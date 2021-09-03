@@ -55,8 +55,16 @@
     <div class="ui basic segment container">
         
 <nav class="ui secondary stackable pointing menu" style="justify-content: center;">
-  <span class="item" style="background: #ff08">This documentation is for v0.2 (in development)</span>
-  <span class="item"></span>
+  <div class="ui simple dropdown item">
+    Latest release (v0.2)
+    <i class="dropdown icon"></i>
+    <div class="menu" style="margin-top: -1px;">
+      <a class="item" href=".">
+        v0.2
+      </a>
+    </div>
+  </div>
+  <div class="item" style="flex-grow: 1;"></div>
   <a href="/docs/" class="item">Overview</a>
   <a href="/docs/getting-started/" class="item">Getting Started</a>
   <a href="/docs/develop/" class="active item">Develop</a>
@@ -78,8 +86,7 @@
 </ul>
 <h3 id="install">Install</h3>
 <p>To retrieve the code using git:</p>
-<pre><code>$ git clone https://gitbox.apache.org/repos/asf/incubator-annotator.git apache-annotator
-</code></pre>
+<pre class="language-shell"><code class="language-shell">$ <span class="token function">git</span> clone https://gitbox.apache.org/repos/asf/incubator-annotator.git apache-annotator</code></pre>
 <p>Then install dependencies using yarn:</p>
 <pre class="language-shell"><code class="language-shell">$ <span class="token builtin class-name">cd</span> apache-annotator<br>$ <span class="token function">yarn</span> <span class="token function">install</span></code></pre>
 <h2 id="build">Build</h2>
@@ -89,8 +96,7 @@
 <p>To use your local build of the code in an application that depends on annotator, have a look at the <a href="https://yarnpkg.com/cli/link"><code>yarn link</code></a> or <a href="https://docs.npmjs.com/cli/v7/commands/npm-link"><code>npm link</code></a> command.</p>
 <h2 id="play">Play</h2>
 <p>To run a webserver running <a href="https://annotator.apache.org/demo/">the demo</a>:</p>
-<pre><code>$ yarn start
-</code></pre>
+<pre class="language-shell"><code class="language-shell">$ <span class="token function">yarn</span> start</code></pre>
 <p>Now open <code>http://localhost:8080/</code> (or whichever address the command prints) in your web browser to play with the demo. The server continuously rebuilds and hot-reloads to the source code after any edits, so you can directly try out any changes you make to the features it demonstrates.</p>
 <h2 id="run-tests">Run tests</h2>
 <p>This runs the tests for all packages and reports their code coverage:</p>
