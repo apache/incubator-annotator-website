@@ -17,7 +17,8 @@ module.exports = function(eleventyConfig) {
     'src/favicon.ico': 'favicon.ico',
     'src/index.js': 'index.js',
     'src/images/': 'images/',
-    'src/site.webmanifest': 'site.webmanifest'
+    'src/site.webmanifest': 'site.webmanifest',
+    'src/css': 'css/'
   });
 
   eleventyConfig.addShortcode('eq', function(a, b) { return a === b });
