@@ -75,30 +75,31 @@
   <h1 style="margin-bottom: 2rem">Develop Apache Annotator</h1>
   <div class="ui mobile reversed stackable grid">
     <div class="twelve wide column">
-      <h2 id="install-from-source">Install from source</h2>
+      <h2 id="install-from-source" tabindex="-1">Install from source</h2>
 <p>This project’s source code is available directly <a href="https://gitbox.apache.org/repos/asf?p=incubator-annotator.git">from the ASF</a> or <a href="https://github.com/apache/incubator-annotator">via GitHub</a>.</p>
-<h3 id="requirements">Requirements</h3>
+<h3 id="requirements" tabindex="-1">Requirements</h3>
 <p>If you’d like to code on the project, you will need the following:</p>
 <ul>
 <li><a href="https://git-scm.com/">git</a></li>
 <li><a href="https://nodejs.org">node</a> version ^12.20 || ^14.15 || ^15.4 || ^16.0</li>
 <li><a href="https://www.yarnpkg.com/">yarn</a> version ^1.5</li>
 </ul>
-<h3 id="install">Install</h3>
+<h3 id="install" tabindex="-1">Install</h3>
 <p>To retrieve the code using git:</p>
 <pre class="language-shell"><code class="language-shell">$ <span class="token function">git</span> clone https://gitbox.apache.org/repos/asf/incubator-annotator.git apache-annotator</code></pre>
 <p>Then install dependencies using yarn:</p>
-<pre class="language-shell"><code class="language-shell">$ <span class="token builtin class-name">cd</span> apache-annotator<br>$ <span class="token function">yarn</span> <span class="token function">install</span></code></pre>
-<h2 id="build">Build</h2>
+<pre class="language-shell"><code class="language-shell">$ <span class="token builtin class-name">cd</span> apache-annotator
+$ <span class="token function">yarn</span> <span class="token function">install</span></code></pre>
+<h2 id="build" tabindex="-1">Build</h2>
 <p>To compile (‘transpile’) the code:</p>
 <pre class="language-shell"><code class="language-shell">$ <span class="token function">yarn</span> build</code></pre>
 <p>For each module, the TypeScript source code is in <code>packages/…/src</code> and the Javascript is output in <code>packages/…/lib</code>.</p>
 <p>To use your local build of the code in an application that depends on annotator, have a look at the <a href="https://yarnpkg.com/cli/link"><code>yarn link</code></a> or <a href="https://docs.npmjs.com/cli/v7/commands/npm-link"><code>npm link</code></a> command.</p>
-<h2 id="play">Play</h2>
+<h2 id="play" tabindex="-1">Play</h2>
 <p>To run a webserver running <a href="https://annotator.apache.org/demo/">the demo</a>:</p>
 <pre class="language-shell"><code class="language-shell">$ <span class="token function">yarn</span> start</code></pre>
 <p>Now open <code>http://localhost:8080/</code> (or whichever address the command prints) in your web browser to play with the demo. The server continuously rebuilds and hot-reloads to the source code after any edits, so you can directly try out any changes you make to the features it demonstrates.</p>
-<h2 id="run-tests">Run tests</h2>
+<h2 id="run-tests" tabindex="-1">Run tests</h2>
 <p>This runs the tests for all packages and reports their code coverage:</p>
 <pre class="language-shell"><code class="language-shell">$ <span class="token function">yarn</span> <span class="token builtin class-name">test</span></code></pre>
 
@@ -114,8 +115,9 @@
         }
       </style>
       <h1 class="ui small dividing header" style="margin: 0;">Contents</h1>
-      <nav class="toc">
-        <ol><li><a href="#install-from-source">Install from source</a><ol><li><a href="#requirements">Requirements</a></li><li><a href="#install">Install</a></li></ol></li><li><a href="#build">Build</a></li><li><a href="#play">Play</a></li><li><a href="#run-tests">Run tests</a></li></ol></nav>
+      <nav class="toc" >
+        <ol><li><a href="#install-from-source">Install from source</a><ol><li><a href="#requirements">Requirements</a></li><li><a href="#install">Install</a></li></ol></li><li><a href="#build">Build</a></li><li><a href="#play">Play</a></li><li><a href="#run-tests">Run tests</a></li></ol>
+      </nav>
     </aside>
   </div>
 </main>

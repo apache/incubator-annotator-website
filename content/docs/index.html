@@ -77,8 +77,8 @@
     <div class="twelve wide column">
       <p>Apache Annotator provides software modules to facilitate annotation tools in web browser environments. For example, it could be used in web-based document viewers or browser extensions that let users highlight phrases and place virtual sticky notes on the pages they visit.</p>
 <p>The modules are written in <a href="https://www.typescriptlang.org/">TypeScript</a>, and distributed as Javascript/ECMAScript modules <a href="https://www.npmjs.com/org/apache-annotator">on NPM</a>. Read further for a high-level description of the code functionality, or <a href="/docs/getting-started/">get started</a> with it directly!</p>
-<h2 id="what-is-in-the-box">What is in the box</h2>
-<h3 id="selector-tools">Selector tools</h3>
+<h2 id="what-is-in-the-box" tabindex="-1">What is in the box</h2>
+<h3 id="selector-tools" tabindex="-1">Selector tools</h3>
 <p>The main functionality Apache Annotator offers is to map a <a href="https://www.w3.org/TR/2017/REC-annotation-model-20170223/#selector">Web Annotation Selector</a> to the segment of a document it corresponds to, sometimes called ‘anchoring’ a Selector; and, vice versa, to create a Selector that describes a given selection in the document precisely and unambiguously, such that other Web Annotation software knows exactly where it points to. The purpose of Selectors is to point at any part of a document without requiring any modification of the document itself.</p>
 <p>The <a href="https://www.w3.org/TR/annotation-model">W3C Web Annotation Data Model</a> outlines a number of different selectors types, to accomodate various use case on different types of documents and selections (e.g. an annotation may target a phrase of text, or a region within an image). The table below shows the full list of defined types and the implementation status of each.</p>
 <table>
@@ -137,12 +137,12 @@
 </tr>
 </tbody>
 </table>
-<h3 id="web-annotation-json-validator">Web Annotation JSON validator</h3>
+<h3 id="web-annotation-json-validator" tabindex="-1">Web Annotation JSON validator</h3>
 <p>The source code also includes a script for validating Web Annotation Data Model JSON documents against the data model schema. Having <a href="/docs/develop/#install-from-source">installed from source</a>, one can run:</p>
-<pre class="language-shell"><code class="language-shell">$ <span class="token function">yarn</span> validate --url https://raw.githubusercontent.com/w3c/web-annotation-tests/master/tools/samples/correct/anno1.json</code></pre>
+<pre class="language-shell"><code class="language-shell">$ <span class="token function">yarn</span> validate <span class="token parameter variable">--url</span> https://raw.githubusercontent.com/w3c/web-annotation-tests/master/tools/samples/correct/anno1.json</code></pre>
 <p>With the <code>--url</code> option you can pass in a URL or a local path to a JSON file.</p>
 <p>See some <a href="https://github.com/w3c/web-annotation-tests/tree/master/tools/samples">example JSON files</a> from the W3C. Note that this validator only tests the data model is followed, and not e.g. whether its target actually exists.</p>
-<h2 id="what-apache-annotator-is-not">What Apache Annotator is not</h2>
+<h2 id="what-apache-annotator-is-not" tabindex="-1">What Apache Annotator is not</h2>
 <p>Apache Annotator is <strong>not an all-in-one annotation tool</strong>; rather, it <em>helps others create</em> annotation tools. It does not have opinions regarding in which database on which computer annotations are stored, nor how they are made, exchanged or displayed. Those questions are considered application-specific and left to the developer. Our goal is that the developer can focus on exactly those questions, and forget about issues that are common among annotation tools: finding the part in the document that is being annotated, dealing with changes in the annotated document, ensuring compatibility with other tools, and so on.</p>
 
     </div>
@@ -157,8 +157,9 @@
         }
       </style>
       <h1 class="ui small dividing header" style="margin: 0;">Contents</h1>
-      <nav class="toc">
-        <ol><li><a href="#what-is-in-the-box">What is in the box</a><ol><li><a href="#selector-tools">Selector tools</a></li><li><a href="#web-annotation-json-validator">Web Annotation JSON validator</a></li></ol></li><li><a href="#what-apache-annotator-is-not">What Apache Annotator is not</a></li></ol></nav>
+      <nav class="toc" >
+        <ol><li><a href="#what-is-in-the-box">What is in the box</a><ol><li><a href="#selector-tools">Selector tools</a></li><li><a href="#web-annotation-json-validator">Web Annotation JSON validator</a></li></ol></li><li><a href="#what-apache-annotator-is-not">What Apache Annotator is not</a></li></ol>
+      </nav>
     </aside>
   </div>
 </main>
