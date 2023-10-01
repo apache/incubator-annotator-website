@@ -35,6 +35,9 @@ Run `yarn build` to build the demo code and docs content (it will overwrite
 Run `yarn serve` to build the demo and docs as well as serve and watch (with
 live reload on changes to the `src/` directory *only*).
 
+Note: if you receive a `ERR_OSSL_EVP_UNSUPPORTED` error, you can resolve this
+by using the legacy SSL provider: `export NODE_OPTIONS=--openssl-legacy-provider`
+
 ## Organizing
 
 We also use the [Milestones](https://github.com/apache/incubator-annotator-website/milestones?direction=asc&sort=due_date&state=open) for [this repo on GitHub](https://github.com/apache/incubator-annotator-website/) to track our quarterly board reports.
